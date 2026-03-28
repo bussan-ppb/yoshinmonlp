@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>楊心門 | 真道無限流 総合武術協会 (ホワイト案)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FAFAFA;
+            --text-color: #222222;
+            --accent-color: #8B0000;
+        }
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Noto Serif JP', serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 2.0; letter-spacing: 0.08em;
+        }
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 30px 5vw; position: absolute; top: 0; width: 90%; z-index: 10;
+        }
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 0.2em; }
+        nav a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; }
+        .hero {
+            height: 100vh; display: flex; justify-content: center; align-items: center;
+            background-color: #E0E0E0; 
+            background-image: linear-gradient(rgba(250, 250, 250, 0.3), rgba(250, 250, 250, 0.8));
+        }
+        .hero-copy {
+            writing-mode: vertical-rl; text-orientation: upright;
+            font-size: 2.5rem; font-weight: 300; height: 60vh; line-height: 2.5; letter-spacing: 0.3em; margin-right: 10vw;
+        }
+        section { padding: 120px 5vw; max-width: 800px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 0.9rem; letter-spacing: 0.2em; color: var(--accent-color); margin-bottom: 60px; }
+        .section-title::after { content: ""; display: block; width: 1px; height: 40px; background-color: var(--accent-color); margin: 20px auto 0; }
+        .philosophy p { font-size: 1.1rem; text-align: justify; margin-bottom: 30px; }
+        .classes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+        .class-card { border: 1px solid #DDDDDD; padding: 40px 30px; text-align: center; background: #FFFFFF; }
+        .class-card h3 { font-size: 1.3rem; font-weight: 400; margin-bottom: 20px; border-bottom: 1px solid #EEE; padding-bottom: 20px; }
+        .class-card p { font-size: 0.95rem; color: #555; }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid #EEEEEE; font-size: 0.8rem; color: #888; margin-top: 80px; }
+        @media (max-width: 768px) { .classes-grid { grid-template-columns: 1fr; } .hero-copy { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">楊心門</div>
+        <nav><a href="#philosophy">理念</a><a href="#classes">稽古</a><a href="#contact">入門</a></nav>
+    </header>
+    <section class="hero">
+        <div class="hero-copy"><p>真の強さは、</p><p>静けさの中に宿る。</p></div>
+    </section>
+    <section id="philosophy" class="philosophy">
+        <h2 class="section-title">理念</h2>
+        <p>武術とは、ただ他者を制するための技術ではありません。己の心と向き合い、静寂の中で精神を研ぎ澄ます「道」です。</p>
+        <p>楊心門では、真道無限流の伝統を受け継ぎながら、現代を生きる大人たち、そして未来を担う子供たちへ、生涯にわたって己を支える「凛とした軸」を提供します。</p>
+    </section>
+    <section id="classes">
+        <h2 class="section-title">稽古</h2>
+        <div class="classes-grid">
+            <div class="class-card"><h3>一般部</h3><p>年齢や運動経験を問わず、それぞれのペースで心身を練磨します。美しい型を通じた姿勢改善や、護身の技術を学びます。</p></div>
+            <div class="class-card"><h3>少年部</h3><p>礼に始まり礼に終わる。武術の稽古を通じて、他者を思いやる心、困難から逃げない強い精神力を育みます。</p></div>
+        </div>
+    </section>
+    <footer><p>&copy; 2026 Yoshinmon - Shindo Mugenryu.</p></footer>
+</body>
+</html>
