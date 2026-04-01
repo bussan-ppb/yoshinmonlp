@@ -1,37 +1,68 @@
 /* ============================================
-   ヒーローセクション
-   全幅のメインビジュアル + テキストオーバーレイ
+   ヒーローセクション（案3：左右分割ダイナミック）
+   左半分=テキスト、右半分=写真プレースホルダー
    ============================================ */
 
 .hero {
   position: relative;
   height: 100vh;
   min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* 左右分割のためflexではなくgridを使用 */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   overflow: hidden;
 }
 
-/* --- 背景画像（写真が入るまではグラデーションで代替） --- */
-.hero__bg {
+/* --- 左側：テキストエリア --- */
+.hero__text-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px var(--page-padding) 80px;
+  /* チャコールグレーの左パネル */
+  background-color: #141414;
+  z-index: 2;
+}
+
+/* 左パネル右端の斜め切り — clip-pathで右側へ食い込む形状 */
+.hero__text-panel::after {
+  content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  right: -60px;
+  width: 120px;
+  height: 100%;
+  background-color: #141414;
+  /* 平行四辺形で斜めに切り込む */
+  clip-path: polygon(0 0, 0% 100%, 100% 100%, 50% 0);
+  z-index: 3;
+}
+
+/* --- 右側：写真エリア --- */
+.hero__bg {
+  position: relative;
   width: 100%;
   height: 100%;
-  /* ヒーロー背景：写真が入るまではダークグラデーションで代替 */
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
-  /* 微妙なズームアニメーション */
-  animation: hero-zoom 20s ease-in-out infinite alternate;
+  /* 写真プレースホルダー：チャコール→ダークグレーのグラデーション */
+  background: linear-gradient(135deg, #1c1c1c 0%, #2a2a2a 50%, #1c1c1c 100%);
+  overflow: hidden;
 }
 
-@keyframes hero-zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
+/* プレースホルダーテキスト（写真が入るまで） */
+.hero__bg p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.1);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-/* --- オーバーレイ（画像の上に暗いフィルター） --- */
+/* 右パネルの微妙な明暗グラデーションオーバーレイ */
 .hero__overlay {
   position: absolute;
   top: 0;
@@ -39,61 +70,79 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.3) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(10, 10, 10, 0.9) 100%
+    to right,
+    rgba(20, 20, 20, 0.3) 0%,
+    rgba(20, 20, 20, 0) 100%
   );
 }
 
-/* --- コンテンツ --- */
+/* --- コンテンツ（左パネル内） --- */
 .hero__content {
   position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 var(--page-padding);
-  max-width: 900px;
+  z-index: 4;
+  max-width: 560px;
 }
 
-/* メインキャッチコピー（ヒーロー内は常に白テキスト） */
+/* 上部のアクセントライン */
+.hero__content::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: var(--color-accent);
+  margin-bottom: var(--space-lg);
+}
+
+/* メインキャッチコピー */
 .hero__title {
   font-size: var(--text-5xl);
   font-weight: 300;
-  letter-spacing: var(--tracking-wide);
-  line-height: 1.4;
-  margin-bottom: var(--space-md);
-  color: #f0f0f0;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  margin-bottom: var(--space-lg);
+  color: #f5f5f5;
 }
 
-/* アクセントカラーのテキスト強調 */
+/* アクセントカラー（深紅）のテキスト強調 */
 .hero__title .accent {
   color: #c41e3a;
+  /* 深紅のテキストに微かな輝き */
+  text-shadow: 0 0 40px rgba(196, 30, 58, 0.3);
 }
 
-/* サブキャッチコピー（ヒーロー内は常に薄い白テキスト） */
+/* サブキャッチコピー */
 .hero__subtitle {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-base);
+  color: rgba(245, 245, 245, 0.6);
   font-weight: 300;
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-xl);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  letter-spacing: 0.06em;
 }
 
 /* CTAボタンエリア */
 .hero__actions {
   display: flex;
   gap: var(--space-sm);
-  justify-content: center;
   flex-wrap: wrap;
 }
 
-/* ヒーロー内のアウトラインボタンは白枠に */
+/* ヒーロー内のプライマリボタン：深紅 */
+.hero .btn--primary {
+  background-color: #c41e3a;
+  color: #ffffff;
+}
+
+.hero .btn--primary:hover {
+  background-color: #e02244;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 30, 58, 0.4);
+}
+
+/* ヒーロー内のアウトラインボタン */
 .hero .btn--outline {
-  color: #f0f0f0;
-  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(245, 245, 245, 0.8);
+  border-color: rgba(245, 245, 245, 0.3);
 }
 
 .hero .btn--outline:hover {
@@ -101,21 +150,21 @@
   color: #c41e3a;
 }
 
-/* --- スクロール誘導（下向き矢印） --- */
+/* --- スクロール誘導 --- */
 .hero__scroll-indicator {
   position: absolute;
   bottom: 40px;
-  left: 50%;
+  /* 左パネルの中央に配置 */
+  left: 25%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(245, 245, 245, 0.4);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wider);
-  /* 上下にふわふわ動くアニメーション */
   animation: bounce 2s ease-in-out infinite;
 }
 
@@ -123,7 +172,7 @@
   content: '';
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(to bottom, rgba(196, 30, 58, 0.6), transparent);
 }
 
 @keyframes bounce {
@@ -131,21 +180,42 @@
   50% { transform: translateX(-50%) translateY(10px); }
 }
 
-/* --- レスポンシブ --- */
+/* --- レスポンシブ：スマートフォンではスタック表示 --- */
 @media (max-width: 768px) {
   .hero {
-    min-height: 500px;
+    /* モバイルでは上下スタックに変更 */
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    min-height: 100vh;
+  }
+
+  .hero__text-panel {
+    grid-row: 1;
+    padding: 100px var(--page-padding) 60px;
+    /* モバイルでは斜め切りを削除 */
+  }
+
+  .hero__text-panel::after {
+    display: none;
+  }
+
+  .hero__bg {
+    grid-row: 2;
+    height: 240px;
   }
 
   .hero__title {
     font-size: var(--text-4xl);
   }
 
-  .hero__subtitle {
-    font-size: var(--text-base);
-  }
-
   .hero__scroll-indicator {
-    bottom: 20px;
+    left: 50%;
+    bottom: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: var(--text-3xl);
   }
 }

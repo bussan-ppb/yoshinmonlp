@@ -3,11 +3,12 @@
    サイト情報・ナビゲーション・SNSリンク
    ============================================ */
 
-/* ホワイト基調でもフッターは落ち着いたダーク系で締める */
+/* ダイナミックダーク案：フッターは深みのあるチャコール、赤ラインで締める */
 .footer {
-  background-color: #1a1a1a;
+  background-color: #0d0d0d;
   color: #e0e0e0;
-  border-top: none;
+  /* 深紅のボーダーラインでダイナミックさを表現 */
+  border-top: 2px solid #c41e3a;
   padding: var(--space-3xl) var(--page-padding) var(--space-xl);
 }
 

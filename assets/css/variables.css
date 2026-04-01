@@ -5,29 +5,29 @@
 
 :root {
   /* === カラーパレット === */
-  /* プライマリ：ホワイト基調で清潔感のあるデザイン */
-  --color-bg-primary: #ffffff;        /* メイン背景：白 */
-  --color-bg-secondary: #f8f8f8;      /* セカンダリ背景：ごく薄いグレー */
-  --color-bg-tertiary: #ffffff;       /* カード・セクション背景 */
-  --color-bg-elevated: #f0f0f0;       /* ホバー時など浮き上がる要素 */
+  /* プライマリ：スレートグレー×深紅 — 力強さとスタイリッシュさの融合 */
+  --color-bg-primary: #141414;        /* メイン背景：チャコール */
+  --color-bg-secondary: #1c1c1c;      /* セカンダリ背景：やや明るいチャコール */
+  --color-bg-tertiary: #202020;       /* カード・セクション背景 */
+  --color-bg-elevated: #2a2a2a;       /* ホバー時など浮き上がる要素 */
 
   /* テキストカラー */
-  --color-text-primary: #1a1a1a;      /* メインテキスト：ほぼ黒 */
-  --color-text-secondary: #555555;    /* サブテキスト：ミディアムグレー */
-  --color-text-muted: #999999;        /* 控えめなテキスト */
+  --color-text-primary: #f5f5f5;      /* メインテキスト：クリーンホワイト */
+  --color-text-secondary: #aaaaaa;    /* サブテキスト：ミディアムグレー */
+  --color-text-muted: #666666;        /* 控えめなテキスト */
 
-  /* アクセント：深紅 — 武道の情熱と伝統を象徴 */
-  --color-accent: #8b0000;            /* メインアクセント（落ち着いた深紅） */
-  --color-accent-light: #a52a2a;      /* アクセント明るめ（ホバー用） */
-  --color-accent-dark: #5c0000;       /* アクセント暗め */
+  /* アクセント：鮮やかな深紅 — スピード感と情熱を象徴 */
+  --color-accent: #c41e3a;            /* メインアクセント（鮮やかな深紅） */
+  --color-accent-light: #e02244;      /* アクセント明るめ（ホバー用） */
+  --color-accent-dark: #8b0000;       /* アクセント暗め */
 
-  /* ゴールド：品格と伝統を表現するサブアクセント */
+  /* ゴールド：サブアクセント */
   --color-gold: #b8860b;              /* ゴールド */
   --color-gold-light: #d4a017;        /* ゴールド明るめ */
 
   /* ボーダー・区切り線 */
-  --color-border: #e8e8e8;            /* 通常のボーダー */
-  --color-border-light: #eeeeee;      /* やや明るいボーダー */
+  --color-border: #2e2e2e;            /* 通常のボーダー：ダーク */
+  --color-border-light: #383838;      /* やや明るいボーダー */
 
   /* === タイポグラフィ === */
   /* Noto Sans JP: 本文用ゴシック体 */
@@ -84,7 +84,7 @@
   --radius-lg: 12px;
 
   /* === シャドウ === */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
