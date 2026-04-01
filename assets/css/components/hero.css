@@ -1,6 +1,6 @@
 /* ============================================
-   ヒーローセクション
-   全幅のメインビジュアル + テキストオーバーレイ
+   ヒーローセクション（案2：和風ダーク）
+   縦書きキャッチコピー + 金アクセント
    ============================================ */
 
 .hero {
@@ -13,16 +13,15 @@
   overflow: hidden;
 }
 
-/* --- 背景画像（写真が入るまではグラデーションで代替） --- */
+/* --- 背景（写真が入るまでは和風グラデーションで代替） --- */
 .hero__bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* ヒーロー背景：写真が入るまではダークグラデーションで代替 */
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
-  /* 微妙なズームアニメーション */
+  /* 漆黒から深い藍への和風グラデーション */
+  background: linear-gradient(160deg, #0a0a0a 0%, #0d0f1a 50%, #0a0a0a 100%);
   animation: hero-zoom 20s ease-in-out infinite alternate;
 }
 
@@ -31,74 +30,105 @@
   to { transform: scale(1.05); }
 }
 
-/* --- オーバーレイ（画像の上に暗いフィルター） --- */
+/* --- 和紙テクスチャ風オーバーレイ --- */
 .hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* 上下をより暗くして視線をコンテンツへ誘導 */
   background: linear-gradient(
     to bottom,
-    rgba(10, 10, 10, 0.3) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(10, 10, 10, 0.9) 100%
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.7) 100%
   );
 }
 
-/* --- コンテンツ --- */
+/* --- 縦書きコンテンツエリア --- */
 .hero__content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  /* 縦書きレイアウト：右から左に流れる */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: var(--space-3xl);
   padding: 0 var(--page-padding);
-  max-width: 900px;
 }
 
-/* メインキャッチコピー（ヒーロー内は常に白テキスト） */
+/* 縦書きメインキャッチコピー */
 .hero__title {
+  /* writing-mode: 縦書きモード（日本語伝統の組版） */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
   font-size: var(--text-5xl);
   font-weight: 300;
-  letter-spacing: var(--tracking-wide);
-  line-height: 1.4;
-  margin-bottom: var(--space-md);
-  color: #f0f0f0;
+  letter-spacing: 0.15em;
+  line-height: 1.6;
+  /* ヒーロー内は常に明るいテキスト */
+  color: #f0ece4;
+  margin: 0;
+  /* 縦書きの行間調整 */
+  word-break: keep-all;
 }
 
-/* アクセントカラーのテキスト強調 */
+/* アクセントカラー（金）のテキスト強調 */
 .hero__title .accent {
-  color: #c41e3a;
+  color: #c9a84c;
 }
 
-/* サブキャッチコピー（ヒーロー内は常に薄い白テキスト） */
+/* 縦書きサブキャッチコピー */
 .hero__subtitle {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.7);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: var(--text-sm);
+  color: rgba(240, 236, 228, 0.6);
   font-weight: 300;
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-xl);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  letter-spacing: 0.12em;
+  line-height: 2.0;
+  margin: 0;
 }
 
-/* CTAボタンエリア */
+/* CTAボタンエリア — 縦書きエリアの下に横並び */
 .hero__actions {
   display: flex;
+  flex-direction: column;
   gap: var(--space-sm);
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-/* ヒーロー内のアウトラインボタンは白枠に */
+/* ヒーロー内のプライマリボタン：金色に */
+.hero .btn--primary {
+  background-color: #c9a84c;
+  color: #0a0a0a;
+  letter-spacing: 0.1em;
+}
+
+.hero .btn--primary:hover {
+  background-color: #e0c070;
+}
+
+/* ヒーロー内のアウトラインボタン：金枠に */
 .hero .btn--outline {
-  color: #f0f0f0;
-  border-color: rgba(255, 255, 255, 0.4);
+  color: #f0ece4;
+  border-color: rgba(201, 168, 76, 0.5);
 }
 
 .hero .btn--outline:hover {
-  border-color: #c41e3a;
-  color: #c41e3a;
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
+/* --- 金の縦線デコレーション --- */
+.hero__divider {
+  width: 1px;
+  height: 80px;
+  /* 縦書きエリアと横書きエリアを金の縦線で区切る */
+  background: linear-gradient(to bottom, transparent, #c9a84c, transparent);
+  flex-shrink: 0;
 }
 
 /* --- スクロール誘導（下向き矢印） --- */
@@ -112,10 +142,10 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.5);
+  /* 金色で統一 */
+  color: rgba(201, 168, 76, 0.6);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-wider);
-  /* 上下にふわふわ動くアニメーション */
   animation: bounce 2s ease-in-out infinite;
 }
 
@@ -123,7 +153,7 @@
   content: '';
   width: 1px;
   height: 40px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.6), transparent);
 }
 
 @keyframes bounce {
@@ -131,18 +161,40 @@
   50% { transform: translateX(-50%) translateY(10px); }
 }
 
-/* --- レスポンシブ --- */
+/* --- レスポンシブ：スマートフォンでは横書きに切り替え --- */
 @media (max-width: 768px) {
   .hero {
     min-height: 500px;
   }
 
+  .hero__content {
+    /* モバイルでは縦書きから横書きに変更 */
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-lg);
+  }
+
   .hero__title {
+    writing-mode: horizontal-tb;
     font-size: var(--text-4xl);
+    line-height: 1.5;
+    letter-spacing: 0.1em;
   }
 
   .hero__subtitle {
-    font-size: var(--text-base);
+    writing-mode: horizontal-tb;
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__divider {
+    display: none;
   }
 
   .hero__scroll-indicator {

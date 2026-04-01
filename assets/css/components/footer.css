@@ -3,11 +3,12 @@
    サイト情報・ナビゲーション・SNSリンク
    ============================================ */
 
-/* ホワイト基調でもフッターは落ち着いたダーク系で締める */
+/* 和風ダーク案：フッターは極限まで黒く、金のライン一本で締める */
 .footer {
-  background-color: #1a1a1a;
+  background-color: #050505;
   color: #e0e0e0;
-  border-top: none;
+  /* 上部に金のボーダーラインでセクションを区切る */
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
   padding: var(--space-3xl) var(--page-padding) var(--space-xl);
 }
 
@@ -43,7 +44,8 @@
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: var(--tracking-wide);
-  color: #cccccc;
+  /* 金色の見出しでダークテーマを引き締める */
+  color: #c9a84c;
   margin-bottom: var(--space-md);
 }
 
