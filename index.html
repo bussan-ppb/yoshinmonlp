@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>楊心門 — デザイン比較</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #111;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 5vw;
+    }
+    h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      margin-bottom: 0.5rem;
+      color: #f0f0f0;
+    }
+    .subtitle {
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 0.2em;
+      margin-bottom: 60px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      width: 100%;
+      max-width: 1100px;
+    }
+    .card {
+      border: 1px solid #2a2a2a;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #555;
+    }
+    /* 各案のテーマカラーを反映したプレビュー帯 */
+    .card__preview {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+    }
+    .card--1 .card__preview {
+      background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+      color: #1a1a1a;
+      border-bottom: 3px solid #8b0000;
+    }
+    .card--2 .card__preview {
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d0f1a 100%);
+      color: #f0ece4;
+      border-bottom: 3px solid #c9a84c;
+    }
+    .card--3 .card__preview {
+      background: linear-gradient(135deg, #141414 0%, #2a2a2a 100%);
+      color: #f5f5f5;
+      border-bottom: 3px solid #c41e3a;
+    }
+    .card__accent--1 { color: #8b0000; }
+    .card__accent--2 { color: #c9a84c; }
+    .card__accent--3 { color: #c41e3a; }
+    .card__body {
+      padding: 20px 24px 24px;
+      background: #1a1a1a;
+    }
+    .card__num {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .card__title {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .card__desc {
+      font-size: 0.78rem;
+      color: #888;
+      line-height: 1.8;
+    }
+    .card__btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      border: 1px solid #333;
+      color: #aaa;
+      transition: all 0.2s;
+    }
+    .card:hover .card__btn {
+      border-color: #666;
+      color: #f0f0f0;
+    }
+    @media (max-width: 768px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>楊心門 デザイン比較</h1>
+  <p class="subtitle">DESIGN COMPARISON — 3 OPTIONS</p>
+
+  <div class="cards">
+    <!-- 案1 -->
+    <a href="option1/index.html" class="card card--1">
+      <div class="card__preview">
+        万流の粋を集めて<span class="card__accent--1">活人拳</span>
+      </div>
+      <div class="card__body">
+        <p class="card__num">OPTION 01</p>
+        <h2 class="card__title">ホワイト × 深紅</h2>
+        <p class="card__desc">清潔感のある白基調。シンプルで視認性が高く、幅広い層に親しみやすいデザイン。</p>
+        <span class="card__btn">このデザインを見る →</span>
+      </div>
+    </a>
+
+    <!-- 案2 -->
+    <a href="option2/index.html" class="card card--2">
+      <div class="card__preview">
+        万流の粋を集めて<span class="card__accent--2">活人拳</span>
+      </div>
+      <div class="card__body">
+        <p class="card__num">OPTION 02</p>
+        <h2 class="card__title">漆黒 × 金</h2>
+        <p class="card__desc">深い黒と金の組み合わせ。縦書きヒーローで和の格調と伝統の重みを表現。</p>
+        <span class="card__btn">このデザインを見る →</span>
+      </div>
+    </a>
+
+    <!-- 案3 -->
+    <a href="option3/index.html" class="card card--3">
+      <div class="card__preview">
+        万流の粋を集めて<span class="card__accent--3">活人拳</span>
+      </div>
+      <div class="card__body">
+        <p class="card__num">OPTION 03</p>
+        <h2 class="card__title">チャコール × 深紅</h2>
+        <p class="card__desc">左右分割のダイナミックなレイアウト。右側に道場写真が入ると迫力が増す構成。</p>
+        <span class="card__btn">このデザインを見る →</span>
+      </div>
+    </a>
+  </div>
+</body>
+</html>

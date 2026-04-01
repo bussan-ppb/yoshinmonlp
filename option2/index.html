@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="楊心門 - 真道無限流 総合武術協会。鹿児島県で活動する空手道場。子供から大人まで、礼節と技を学ぶ。">
+  <title>楊心門 | 真道無限流 総合武術協会</title>
+
+  <!-- Google Fonts：Noto Sans JP（本文）+ Noto Serif JP（見出し） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS：デザイントークン → ベーススタイル → コンポーネント の順で読み込み -->
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/hero.css">
+  <link rel="stylesheet" href="assets/css/components/card.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+</head>
+<body>
+
+  <!-- ========== ヘッダー ========== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="./" class="header__logo">楊心門</a>
+
+      <!-- デスクトップナビゲーション -->
+      <nav class="header__nav">
+        <a href="about.html" class="header__nav-link">理念</a>
+        <a href="instructors.html" class="header__nav-link">指導者</a>
+        <a href="news.html" class="header__nav-link">お知らせ</a>
+        <a href="gallery.html" class="header__nav-link">活動記録</a>
+        <a href="access.html" class="header__nav-link">アクセス</a>
+        <a href="contact.html" class="header__nav-link">お問い合わせ</a>
+      </nav>
+
+      <!-- モバイル用ハンバーガーボタン -->
+      <button class="header__menu-btn" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- モバイルナビゲーション（オーバーレイ） -->
+  <nav class="mobile-nav">
+    <a href="about.html" class="mobile-nav__link">理念</a>
+    <a href="instructors.html" class="mobile-nav__link">指導者</a>
+    <a href="news.html" class="mobile-nav__link">お知らせ</a>
+    <a href="gallery.html" class="mobile-nav__link">活動記録</a>
+    <a href="access.html" class="mobile-nav__link">アクセス</a>
+    <a href="contact.html" class="mobile-nav__link">お問い合わせ</a>
+  </nav>
+
+  <!-- ========== ヒーローセクション ========== -->
+  <section class="hero">
+    <div class="hero__bg">
+      <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.15); font-size: 1.2rem; letter-spacing: 0.2em; white-space: nowrap; pointer-events: none;">[ ヒーロー写真が入ります ]</p>
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <!-- 縦書きメインキャッチコピー（宗師訓より） -->
+      <h1 class="hero__title">
+        万流の粋を集めて<span class="accent">活人拳</span>となす
+      </h1>
+
+      <!-- 縦線デコレーション -->
+      <div class="hero__divider"></div>
+
+      <!-- サブキャッチコピー（縦書き） -->
+      <p class="hero__subtitle">
+        無限流もって万流の役割を果たし楊心門をして活人拳となす
+      </p>
+
+      <!-- CTAボタン（縦方向に並ぶ） -->
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary">入門のご案内</a>
+        <a href="about.html" class="btn btn--outline">楊心門について</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-indicator">SCROLL</div>
+  </section>
+
+  <!-- ========== 理念セクション ========== -->
+  <section class="fade-in">
+    <div class="container--narrow" style="text-align: center;">
+      <span class="section-label">Philosophy</span>
+      <h2 class="section-title">明るく、楽しく、元気よく</h2>
+      <div class="divider"></div>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        多くの武術（剣道、柔道、合気道、空手道（他流））の粋を集めて無限流と名付け、
+        無限流もって多くの武術の役割を果たすと共に、
+        無限流楊心門は人を活かす拳なり。
+      </p>
+      <div style="margin-top: var(--space-xl);">
+        <a href="about.html" class="btn btn--outline">理念を詳しく見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 稽古案内セクション ========== -->
+  <section style="background-color: var(--color-bg-secondary);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <span class="section-label">Classes</span>
+        <h2 class="section-title">稽古案内</h2>
+      </div>
+
+      <div class="card-grid--3col card-grid fade-in">
+        <!-- 身を守る -->
+        <div class="card">
+          <h3 class="card__title">身を守る</h3>
+          <p class="card__text">
+            相手の攻撃から身を守るだけでなく、
+            広く交通事故や病気等からも身を守る力を養います。
+          </p>
+        </div>
+
+        <!-- 人を助ける -->
+        <div class="card">
+          <h3 class="card__title">人を助ける</h3>
+          <p class="card__text">
+            弱い人を助けると共に、広く世の為、人の為になることを目指します。
+          </p>
+        </div>
+
+        <!-- 礼儀正しくする -->
+        <div class="card">
+          <h3 class="card__title">礼儀正しくする</h3>
+          <p class="card__text">
+            人として、武道家として、礼儀作法が最も大切です。
+            稽古を通じて礼節を身につけます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== お知らせセクション ========== -->
+  <section>
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2xl);">
+        <div>
+          <span class="section-label">News</span>
+          <h2 class="section-title">お知らせ</h2>
+        </div>
+        <a href="news.html" class="btn btn--outline">一覧を見る →</a>
+      </div>
+
+      <div class="card-grid fade-in">
+        <!-- お知らせカード -->
+        <div class="card card--image">
+          <img class="card__img" src="assets/images/gallery/kankgeiko.jpg" alt="寒稽古の様子">
+          <div class="card__body">
+            <span class="card__date">2024.01.29</span>
+            <h3 class="card__title">令和６年能登半島地震への募金について</h3>
+            <p class="card__text">1月21日の寒稽古会場にて義援金を募り、48,191円を南日本新聞社へ振込みました。</p>
+          </div>
+        </div>
+
+        <div class="card card--image">
+          <img class="card__img" src="assets/images/gallery/10th-anniversary.jpg" alt="創立10周年祝賀会">
+          <div class="card__body">
+            <span class="card__date">2023.10.10</span>
+            <h3 class="card__title">創立10周年を迎えました</h3>
+            <p class="card__text">開祖・枦山拳龍創師のもとスタートした楊心門空手道が、創立10周年を達成しました。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== フッター ========== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo">楊心門</div>
+        <p class="footer__desc">
+          真道無限流 総合武術協会<br>
+          鹿児島県南大隅町に総本山を置く武道団体
+        </p>
+        <!-- SNSリンク -->
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer__nav-title">ページ</h4>
+        <ul class="footer__nav-list">
+          <li><a href="about.html">理念</a></li>
+          <li><a href="instructors.html">指導者紹介</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="gallery.html">活動記録</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__nav-title">ご案内</h4>
+        <ul class="footer__nav-list">
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2026 Yoshinmon - Shindo Mugenryu. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
