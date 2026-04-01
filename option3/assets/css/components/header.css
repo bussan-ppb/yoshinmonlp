@@ -35,16 +35,23 @@
 
 /* --- ロゴ --- */
 .header__logo {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 400;
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
   transition: opacity var(--transition-fast);
 }
 
 .header__logo:hover {
   opacity: 0.7;
+}
+
+/* ロゴ画像：案3（チャコール×深紅）
+   背景が常にダーク系なのでロゴは常に白に反転 */
+.header__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  filter: invert(1) brightness(2);
+  transition: filter var(--transition-base);
 }
 
 /* --- デスクトップナビゲーション --- */

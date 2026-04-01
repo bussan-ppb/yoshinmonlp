@@ -35,16 +35,30 @@
 
 /* --- ロゴ --- */
 .header__logo {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 400;
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
   transition: opacity var(--transition-fast);
 }
 
 .header__logo:hover {
   opacity: 0.7;
+}
+
+/* ロゴ画像：案1（白基調）
+   初期状態：透明ヘッダー＋ダークヒーロー上 → ロゴを白に反転
+   スクロール後：白背景 → ロゴを元の墨黒に戻す */
+.header__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  /* ダークヒーロー上では白に反転 */
+  filter: invert(1) brightness(2);
+  transition: filter var(--transition-base);
+}
+
+.header.is-scrolled .header__logo-img {
+  /* 白背景スクロール後：墨黒に戻す */
+  filter: none;
 }
 
 /* --- デスクトップナビゲーション --- */

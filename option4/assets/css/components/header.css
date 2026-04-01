@@ -35,16 +35,25 @@
 
 /* --- ロゴ --- */
 .header__logo {
-  font-family: var(--font-heading);
-  font-size: var(--text-xl);
-  font-weight: 400;
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
   transition: opacity var(--transition-fast);
 }
 
 .header__logo:hover {
   opacity: 0.7;
+}
+
+/* ロゴ画像：案4（和紙クリーム×墨黒）
+   ヒーロー背景がクリームなのでロゴは元の墨黒のまま表示
+   スクロール後もクリーム背景なので変更不要 */
+.header__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  /* 墨黒ロゴをそのまま表示（クリーム背景に映える） */
+  filter: none;
+  transition: filter var(--transition-base);
 }
 
 /* --- デスクトップナビゲーション --- */
