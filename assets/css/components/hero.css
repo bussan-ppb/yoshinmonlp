@@ -1,99 +1,174 @@
 /* ============================================
-   ヒーローセクション
-   全幅のメインビジュアル + テキストオーバーレイ
+   ヒーローセクション（案4：ブロークングリッド）
+   アンチグリッド：巨大背景文字 / 斜め断裂 / セクション越境カード
    ============================================ */
 
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  min-height: 100vh;
+  background-color: #f5f2ec;
+  /* overflow:hiddenを外してCTAカードのセクション越境を許可 */
+  /* 横はみ出しはbodyのoverflow-x:hiddenで制御 */
+  overflow: visible;
+  /* コンテンツが下セクションに「はみ出す」余白を確保 */
+  padding-bottom: 100px;
 }
 
-/* --- 背景画像（写真が入るまではグラデーションで代替） --- */
-.hero__bg {
+/* ----------------------------------------------------------------
+   巨大背景文字：グリッドを完全に無視して右にはみ出す
+   「活人拳」3文字が画面右端を突き破る装飾要素
+   ---------------------------------------------------------------- */
+.hero__super-text {
+  position: absolute;
+  /* 右端から-5vwはみ出させる */
+  right: -5vw;
+  top: 50%;
+  transform: translateY(-55%);
+  font-family: 'Noto Serif JP', serif;
+  /* 画面幅の38%という規格外のサイズ */
+  font-size: 38vw;
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  /* 薄い墨色：テキストとの干渉を防ぐウォーターマーク効果 */
+  color: rgba(13, 13, 13, 0.05);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* ----------------------------------------------------------------
+   斜めに走る朱色の細帯：ヒーローを「断裂」させるグラフィック要素
+   ---------------------------------------------------------------- */
+.hero__slash {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* ヒーロー背景：写真が入るまではダークグラデーションで代替 */
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
-  /* 微妙なズームアニメーション */
-  animation: hero-zoom 20s ease-in-out infinite alternate;
+  left: 52%;
+  width: 3px;
+  height: 200%;
+  background-color: #c41e3a;
+  /* 12度傾けて対角線を形成 */
+  transform: rotate(12deg) translateY(-25%);
+  transform-origin: top center;
+  opacity: 0.12;
+  z-index: 0;
 }
 
-@keyframes hero-zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
-}
-
-/* --- オーバーレイ（画像の上に暗いフィルター） --- */
-.hero__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 10, 0.3) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(10, 10, 10, 0.9) 100%
-  );
-}
-
-/* --- コンテンツ --- */
+/* ----------------------------------------------------------------
+   メインコンテンツ：左寄せ・意図的に中央揃えを避ける
+   ---------------------------------------------------------------- */
 .hero__content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  padding: 0 var(--page-padding);
-  max-width: 900px;
+  padding: 160px 5vw 60px 8vw;
+  max-width: 1400px;
 }
 
-/* メインキャッチコピー（ヒーロー内は常に白テキスト） */
+/* 上部ラベル（赤線+テキスト） */
+.hero__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: #c41e3a;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: #c41e3a;
+  flex-shrink: 0;
+}
+
+/* メインタイトル：clampで流体タイポグラフィ */
 .hero__title {
-  font-size: var(--text-5xl);
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 300;
-  letter-spacing: var(--tracking-wide);
-  line-height: 1.4;
-  margin-bottom: var(--space-md);
-  color: #f0f0f0;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: #0d0d0d;
+  margin: 0;
+  /* 通常より少し左にはみ出す */
+  margin-left: -0.05em;
 }
 
-/* アクセントカラーのテキスト強調 */
-.hero__title .accent {
+/* 「活人拳となす」：12vwのインデントで右に突き出す */
+.hero__title-accent {
+  display: block;
+  padding-left: 12vw;
+  margin-top: 0.1em;
+  position: relative;
+}
+
+.hero__title-accent .accent {
   color: #c41e3a;
 }
 
-/* サブキャッチコピー（ヒーロー内は常に薄い白テキスト） */
-.hero__subtitle {
-  font-size: var(--text-lg);
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 300;
-  line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-xl);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* ----------------------------------------------------------------
+   CTA カード：セクション境界を「またぐ」浮き上がり要素
+   bottom: -80px でヒーロー外にはみ出す
+   ---------------------------------------------------------------- */
+.hero__cta-card {
+  position: absolute;
+  bottom: -80px;
+  right: 8vw;
+  width: min(480px, 90vw);
+  background-color: #0d0d0d;
+  color: #f5f2ec;
+  padding: 44px 48px;
+  z-index: 10;
+  box-shadow: 0 24px 64px rgba(13, 13, 13, 0.18);
 }
 
-/* CTAボタンエリア */
+/* カード上部の朱色ライン */
+.hero__cta-card::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: #c41e3a;
+  margin-bottom: 1.5rem;
+}
+
+.hero__cta-subtitle {
+  font-size: 0.9rem;
+  color: rgba(245, 242, 236, 0.7);
+  font-weight: 300;
+  line-height: 2.0;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
 .hero__actions {
   display: flex;
-  gap: var(--space-sm);
-  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
-/* ヒーロー内のアウトラインボタンは白枠に */
+/* カード内ボタン上書き */
+.hero .btn--primary {
+  background-color: #c41e3a;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+}
+
+.hero .btn--primary:hover {
+  background-color: #e02244;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 30, 58, 0.35);
+}
+
 .hero .btn--outline {
-  color: #f0f0f0;
-  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(245, 242, 236, 0.8);
+  border-color: rgba(245, 242, 236, 0.25);
 }
 
 .hero .btn--outline:hover {
@@ -101,51 +176,91 @@
   color: #c41e3a;
 }
 
-/* --- スクロール誘導（下向き矢印） --- */
+/* ----------------------------------------------------------------
+   スクロール誘導：横向きアニメーション（縦型と差別化）
+   ---------------------------------------------------------------- */
 .hero__scroll-indicator {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 120px;
+  left: 8vw;
   z-index: 2;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  color: rgba(255, 255, 255, 0.5);
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wider);
-  /* 上下にふわふわ動くアニメーション */
-  animation: bounce 2s ease-in-out infinite;
+  gap: 1rem;
+  color: rgba(13, 13, 13, 0.35);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  animation: bounce-x 2s ease-in-out infinite;
 }
 
 .hero__scroll-indicator::after {
   content: '';
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(13,13,13,0.35), transparent);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(10px); }
+@keyframes bounce-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
 }
 
-/* --- レスポンシブ --- */
+/* ----------------------------------------------------------------
+   次セクションの上部パディング：CTAカードのはみ出し分を吸収
+   ---------------------------------------------------------------- */
+.hero + section {
+  padding-top: calc(var(--space-4xl) + 100px);
+}
+
+/* ----------------------------------------------------------------
+   レスポンシブ
+   ---------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero__cta-card {
+    right: 5vw;
+    width: min(420px, 88vw);
+    padding: 36px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
-    min-height: 500px;
+    padding-bottom: 60px;
+  }
+
+  .hero__super-text {
+    font-size: 55vw;
+    right: -8vw;
+    top: 30%;
+    transform: none;
+  }
+
+  .hero__content {
+    padding: 120px 6vw 40px;
   }
 
   .hero__title {
-    font-size: var(--text-4xl);
+    font-size: clamp(2.5rem, 10vw, 4rem);
   }
 
-  .hero__subtitle {
-    font-size: var(--text-base);
+  .hero__title-accent {
+    padding-left: 6vw;
+  }
+
+  /* モバイルでは絶対配置をやめて通常フローに */
+  .hero__cta-card {
+    position: static;
+    margin: 40px 6vw 0;
+    width: auto;
+    box-shadow: none;
+  }
+
+  .hero + section {
+    padding-top: var(--space-3xl);
   }
 
   .hero__scroll-indicator {
-    bottom: 20px;
+    bottom: 32px;
   }
 }

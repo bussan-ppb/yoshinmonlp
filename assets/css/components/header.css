@@ -14,14 +14,14 @@
   transition: background-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* スクロール時：背景を半透明ホワイトに変更 */
+/* スクロール時：和紙クリームの半透明背景 */
 .header.is-scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
-  /* backdrop-filter: ガラスのようなぼかし効果 */
+  background-color: rgba(245, 242, 236, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+  /* 細い朱色ラインで下端を締める */
+  border-bottom: 1px solid rgba(196, 30, 58, 0.15);
 }
 
 .header__inner {

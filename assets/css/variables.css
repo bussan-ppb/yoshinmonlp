@@ -5,29 +5,31 @@
 
 :root {
   /* === カラーパレット === */
-  /* プライマリ：ホワイト基調で清潔感のあるデザイン */
-  --color-bg-primary: #ffffff;        /* メイン背景：白 */
-  --color-bg-secondary: #f8f8f8;      /* セカンダリ背景：ごく薄いグレー */
-  --color-bg-tertiary: #ffffff;       /* カード・セクション背景 */
-  --color-bg-elevated: #f0f0f0;       /* ホバー時など浮き上がる要素 */
+  /* プライマリ：和紙クリーム×墨黒 — エディトリアルな質感 */
+  --color-bg-primary: #f5f2ec;        /* メイン背景：和紙クリーム */
+  --color-bg-secondary: #ede9e1;      /* セカンダリ背景：やや濃いクリーム */
+  --color-bg-tertiary: #ffffff;       /* カード背景：白 */
+  --color-bg-elevated: #e8e4db;       /* ホバー時など */
+  --color-bg-ink: #0d0d0d;            /* 墨黒：コントラスト要素用 */
 
   /* テキストカラー */
-  --color-text-primary: #1a1a1a;      /* メインテキスト：ほぼ黒 */
-  --color-text-secondary: #555555;    /* サブテキスト：ミディアムグレー */
+  --color-text-primary: #0d0d0d;      /* メインテキスト：墨黒 */
+  --color-text-secondary: #4a4a4a;    /* サブテキスト */
   --color-text-muted: #999999;        /* 控えめなテキスト */
+  --color-text-inverse: #f5f2ec;      /* 反転テキスト（黒背景上） */
 
-  /* アクセント：深紅 — 武道の情熱と伝統を象徴 */
-  --color-accent: #8b0000;            /* メインアクセント（落ち着いた深紅） */
-  --color-accent-light: #a52a2a;      /* アクセント明るめ（ホバー用） */
-  --color-accent-dark: #5c0000;       /* アクセント暗め */
+  /* アクセント：朱色 — 武道の刻印 */
+  --color-accent: #c41e3a;            /* メインアクセント（朱色） */
+  --color-accent-light: #e02244;      /* アクセント明るめ */
+  --color-accent-dark: #8b0000;       /* アクセント暗め */
 
-  /* ゴールド：品格と伝統を表現するサブアクセント */
-  --color-gold: #b8860b;              /* ゴールド */
-  --color-gold-light: #d4a017;        /* ゴールド明るめ */
+  /* ゴールド */
+  --color-gold: #b8860b;
+  --color-gold-light: #d4a017;
 
   /* ボーダー・区切り線 */
-  --color-border: #e8e8e8;            /* 通常のボーダー */
-  --color-border-light: #eeeeee;      /* やや明るいボーダー */
+  --color-border: #d8d4cc;            /* 通常のボーダー：クリーム調 */
+  --color-border-light: #e4e0d8;      /* やや明るいボーダー */
 
   /* === タイポグラフィ === */
   /* Noto Sans JP: 本文用ゴシック体 */
