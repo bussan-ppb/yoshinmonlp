@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="楊心門へのアクセス・道場案内。所在地、稽古時間、駐車場情報。">
+  <title>アクセス | 楊心門</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/card.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header is-scrolled">
+    <div class="header__inner">
+      <a href="./" class="header__logo">楊心門</a>
+      <nav class="header__nav">
+        <a href="about.html" class="header__nav-link">理念</a>
+        <a href="instructors.html" class="header__nav-link">指導者</a>
+        <a href="news.html" class="header__nav-link">お知らせ</a>
+        <a href="gallery.html" class="header__nav-link">活動記録</a>
+        <a href="access.html" class="header__nav-link">アクセス</a>
+        <a href="contact.html" class="header__nav-link">お問い合わせ</a>
+      </nav>
+      <button class="header__menu-btn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="about.html" class="mobile-nav__link">理念</a>
+    <a href="instructors.html" class="mobile-nav__link">指導者</a>
+    <a href="news.html" class="mobile-nav__link">お知らせ</a>
+    <a href="gallery.html" class="mobile-nav__link">活動記録</a>
+    <a href="access.html" class="mobile-nav__link">アクセス</a>
+    <a href="contact.html" class="mobile-nav__link">お問い合わせ</a>
+  </nav>
+
+  <!-- ページヘッダー -->
+  <section style="padding-top: calc(var(--space-4xl) + 80px); text-align: center;">
+    <div class="container--narrow">
+      <span class="section-label">Access</span>
+      <h1 class="section-title" style="font-size: var(--text-4xl);">アクセス・道場案内</h1>
+      <p class="section-subtitle" style="margin: var(--space-md) auto 0;">
+        道場の所在地・稽古日時のご案内
+      </p>
+    </div>
+  </section>
+
+  <!-- 道場情報 -->
+  <section>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start;">
+
+        <!-- 左：道場情報 -->
+        <div class="fade-in">
+          <span class="section-label">Information</span>
+          <h2 class="section-title">道場情報</h2>
+
+          <!-- 情報テーブル風レイアウト -->
+          <div style="margin-top: var(--space-xl);">
+            <div style="padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border);">
+              <span style="font-size: var(--text-sm); color: var(--color-text-muted); display: block; margin-bottom: var(--space-xs);">名称</span>
+              <span style="font-size: var(--text-lg);">楊心門（真道無限流 総合武術協会）</span>
+            </div>
+
+            <div style="padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border);">
+              <span style="font-size: var(--text-sm); color: var(--color-text-muted); display: block; margin-bottom: var(--space-xs);">所在地</span>
+              <span style="font-size: var(--text-lg);">鹿児島県肝属郡南大隅町根占川南5368（総本山道場）</span>
+            </div>
+
+            <div style="padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border);">
+              <span style="font-size: var(--text-sm); color: var(--color-text-muted); display: block; margin-bottom: var(--space-xs);">駐車場</span>
+              <span style="font-size: var(--text-lg);">あり（詳細はお問い合わせください）</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右：地図プレースホルダー -->
+        <div class="fade-in">
+          <div style="width: 100%; height: 400px; background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; color: var(--color-text-muted);">
+            <!-- 本番ではGoogle Maps の iframe を埋め込み -->
+            <p style="text-align: center; font-size: var(--text-sm);">
+              [ Google Maps 埋め込みエリア ]<br>
+              ※ 実際の地図に差し替えます
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 稽古スケジュール -->
+  <section style="background-color: var(--color-bg-secondary);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <span class="section-label">Schedule</span>
+        <h2 class="section-title">稽古日時</h2>
+      </div>
+
+      <div class="card-grid fade-in">
+        <div class="card" style="text-align: center;">
+          <span class="card__label">少年部</span>
+          <h3 class="card__title">子供の稽古</h3>
+          <p class="card__text">
+            ※ 稽古日時は道場にてご確認ください
+          </p>
+        </div>
+
+        <div class="card" style="text-align: center;">
+          <span class="card__label">一般部</span>
+          <h3 class="card__title">大人の稽古</h3>
+          <p class="card__text">
+            ※ 稽古日時は道場にてご確認ください
+          </p>
+        </div>
+      </div>
+
+      <p style="text-align: center; color: var(--color-text-muted); margin-top: var(--space-xl); font-size: var(--text-sm);">
+        ※ スケジュールは変更になる場合があります。最新情報はお知らせページをご確認ください。
+      </p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo">楊心門</div>
+        <p class="footer__desc">真道無限流 総合武術協会<br>鹿児島県南大隅町に総本山を置く武道団体</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__nav-title">ページ</h4>
+        <ul class="footer__nav-list">
+          <li><a href="about.html">理念</a></li>
+          <li><a href="instructors.html">指導者紹介</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="gallery.html">活動記録</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__nav-title">ご案内</h4>
+        <ul class="footer__nav-list">
+          <li><a href="access.html">アクセス</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2026 Yoshinmon - Shindo Mugenryu. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

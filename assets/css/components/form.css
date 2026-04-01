@@ -1,0 +1,83 @@
+/* ============================================
+   フォーム関連
+   お問い合わせフォーム・入力フィールド
+   ============================================ */
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form__group {
+  margin-bottom: var(--space-md);
+}
+
+.form__label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+/* 必須マーク */
+.form__label .required {
+  color: var(--color-accent);
+  margin-left: 4px;
+  font-size: var(--text-xs);
+}
+
+/* --- 入力フィールド共通 --- */
+.form__input,
+.form__textarea,
+.form__select {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  transition: border-color var(--transition-fast);
+  /* 角丸なし：シャープでクールな印象 */
+  border-radius: 0;
+  outline: none;
+}
+
+.form__input:focus,
+.form__textarea:focus,
+.form__select:focus {
+  border-color: var(--color-accent);
+}
+
+/* テキストエリア */
+.form__textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: var(--leading-normal);
+}
+
+/* --- エラー表示 --- */
+.form__error {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  margin-top: 4px;
+  display: none;
+}
+
+.form__group.has-error .form__input,
+.form__group.has-error .form__textarea {
+  border-color: var(--color-accent);
+}
+
+.form__group.has-error .form__error {
+  display: block;
+}
+
+/* --- 送信ボタン --- */
+.form__submit {
+  width: 100%;
+  padding: 16px;
+  margin-top: var(--space-md);
+}
