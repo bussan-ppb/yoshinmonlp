@@ -1,0 +1,125 @@
+/* ============================================
+   フッター
+   サイト情報・ナビゲーション・SNSリンク
+   ============================================ */
+
+/* ホワイト基調でもフッターは落ち着いたダーク系で締める */
+.footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-top: none;
+  padding: var(--space-3xl) var(--page-padding) var(--space-xl);
+}
+
+.footer__inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-2xl);
+}
+
+/* --- フッターロゴ・説明 --- */
+.footer__brand {
+  /* ロゴと簡単な説明 */
+}
+
+.footer__logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-sm);
+}
+
+.footer__desc {
+  font-size: var(--text-sm);
+  color: #888888;
+  line-height: var(--leading-relaxed);
+  max-width: 300px;
+}
+
+/* --- フッターナビ --- */
+.footer__nav-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  color: #cccccc;
+  margin-bottom: var(--space-md);
+}
+
+.footer__nav-list li {
+  margin-bottom: var(--space-xs);
+}
+
+.footer__nav-list a {
+  font-size: var(--text-sm);
+  color: #888888;
+  transition: color var(--transition-fast);
+}
+
+.footer__nav-list a:hover {
+  color: var(--color-accent);
+}
+
+/* --- SNSリンク --- */
+.footer__social {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #444444;
+  color: #888888;
+  font-size: var(--text-sm);
+  transition: all var(--transition-fast);
+}
+
+.footer__social-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* --- コピーライト --- */
+.footer__bottom {
+  max-width: var(--content-width);
+  margin: var(--space-2xl) auto 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: var(--text-xs);
+  color: #666666;
+}
+
+/* --- 1カラム中央揃えレイアウト（案5用） --- */
+.footer__inner--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
