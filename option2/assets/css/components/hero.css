@@ -64,17 +64,18 @@
   /* writing-mode: 縦書きモード（日本語伝統の組版） */
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: clamp(2rem, 5vw, var(--text-5xl));
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 300;
-  letter-spacing: 0.15em;
-  line-height: 1.6;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
   /* ヒーロー内は常に明るいテキスト */
   color: #f0ece4;
   margin: 0;
   /* 縦書きの行間調整 */
   word-break: keep-all;
   /* 縦書きの高さを制限し、見切れを防止 */
-  max-height: 70vh;
+  max-height: 80vh;
+  overflow: visible;
 }
 
 /* アクセントカラー（金）のテキスト強調 */
