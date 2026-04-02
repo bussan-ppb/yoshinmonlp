@@ -160,6 +160,12 @@ section {
   transform: translateY(0);
 }
 
+/* --- CTA帯：フッター直上の誘導バナー --- */
+.cta-band {
+  background-color: var(--color-accent);
+  padding: var(--space-3xl) var(--page-padding);
+}
+
 /* --- レスポンシブ：タブレット --- */
 @media (max-width: 1024px) {
   :root {

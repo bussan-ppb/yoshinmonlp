@@ -21,6 +21,11 @@
   --color-accent-light: #a52a2a;      /* アクセント明るめ（ホバー用） */
   --color-accent-dark: #5c0000;       /* アクセント暗め */
 
+  /* 藍色：武道の静けさと深みを表現するサブアクセント */
+  --color-blue: #1b4965;              /* 藍色（濃紺） */
+  --color-blue-light: #2a6f97;        /* 藍色明るめ（ホバー用） */
+  --color-blue-pale: #e8f0f5;         /* 藍色の薄い背景用 */
+
   /* ゴールド：品格と伝統を表現するサブアクセント */
   --color-gold: #b8860b;              /* ゴールド */
   --color-gold-light: #d4a017;        /* ゴールド明るめ */
