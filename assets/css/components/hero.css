@@ -64,7 +64,7 @@
   /* writing-mode: 縦書きモード（日本語伝統の組版） */
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: var(--text-5xl);
+  font-size: clamp(2rem, 5vw, var(--text-5xl));
   font-weight: 300;
   letter-spacing: 0.15em;
   line-height: 1.6;
@@ -73,6 +73,8 @@
   margin: 0;
   /* 縦書きの行間調整 */
   word-break: keep-all;
+  /* 縦書きの高さを制限し、見切れを防止 */
+  max-height: 70vh;
 }
 
 /* アクセントカラー（金）のテキスト強調 */
@@ -176,9 +178,11 @@
 
   .hero__title {
     writing-mode: horizontal-tb;
-    font-size: var(--text-4xl);
+    /* スマホでは文字サイズをビューポート幅に連動させ見切れを防止 */
+    font-size: clamp(1.5rem, 7vw, var(--text-4xl));
     line-height: 1.5;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    max-height: none;
   }
 
   .hero__subtitle {
