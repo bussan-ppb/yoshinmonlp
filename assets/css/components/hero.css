@@ -13,15 +13,16 @@
   overflow: hidden;
 }
 
-/* --- 背景（写真が入るまでは和風グラデーションで代替） --- */
+/* --- 背景写真 --- */
 .hero__bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* 漆黒から深い藍への和風グラデーション */
-  background: linear-gradient(160deg, #0a0a0a 0%, #0d0f1a 50%, #0a0a0a 100%);
+  background: url('/assets/images/hero/tobi-geri.jpg') center 30% / cover no-repeat;
+  /* フォールバック：写真読み込み前の背景色 */
+  background-color: #0a0a0a;
   animation: hero-zoom 20s ease-in-out infinite alternate;
 }
 
