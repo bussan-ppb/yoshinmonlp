@@ -81,11 +81,11 @@
   color: #c9a84c;
 }
 
-/* 縦書きサブキャッチコピー */
+/* 縦書きサブキャッチコピー（タイトルと同サイズ） */
 .hero__subtitle {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: var(--text-sm);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   color: rgba(240, 236, 228, 0.6);
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -186,7 +186,7 @@
 
   .hero__subtitle {
     writing-mode: horizontal-tb;
-    font-size: var(--text-sm);
+    font-size: clamp(1.5rem, 7vw, var(--text-4xl));
     text-align: center;
   }
 
