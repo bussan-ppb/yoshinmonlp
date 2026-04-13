@@ -63,28 +63,34 @@
   color: var(--color-accent);
 }
 
-/* --- SNSリンク --- */
+/* --- Instagram QRコード --- */
 .footer__social {
-  display: flex;
-  gap: var(--space-sm);
   margin-top: var(--space-md);
 }
 
-.footer__social-link {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #444444;
-  color: #888888;
-  font-size: var(--text-sm);
-  transition: all var(--transition-fast);
+.footer__instagram-qr {
+  display: inline-block;
+  text-align: center;
+  transition: opacity var(--transition-fast);
 }
 
-.footer__social-link:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+.footer__instagram-qr img {
+  /* 白背景のQR画像をダークフッターに馴染ませる */
+  border-radius: 8px;
+  display: block;
+}
+
+.footer__instagram-qr:hover {
+  opacity: 0.85;
+}
+
+/* Instagramラベル */
+.footer__instagram-label {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: var(--text-xs);
+  color: #888888;
+  letter-spacing: var(--tracking-wide);
 }
 
 /* --- コピーライト --- */
