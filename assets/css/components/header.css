@@ -142,7 +142,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .mobile-nav.is-open {
