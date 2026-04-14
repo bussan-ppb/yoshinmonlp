@@ -90,6 +90,32 @@
   border: 2px solid var(--color-border);
 }
 
+.card--instructor .card__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-xs);
+}
+
+.card--instructor .card__role {
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-sm);
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 1024px) {
+  .card-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid,
+  .card-grid--3col {
+    grid-template-columns: 1fr;
+  }
+}
 /* アバター画像ラッパー（三日月フレーム付き写真の顔にズームイン） */
 .card--instructor .card__avatar-wrap {
   width: 120px;
