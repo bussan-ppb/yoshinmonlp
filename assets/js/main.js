@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       {
-        // 要素が20%見えた時点でトリガー
-        threshold: 0.2,
+        // 要素が5%見えた時点でトリガー（ギャラリー等の縦長要素対策）
+        threshold: 0.05,
         // 画面下端から-50px手前でトリガー
         rootMargin: '0px 0px -50px 0px'
       }
