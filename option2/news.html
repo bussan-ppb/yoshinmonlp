@@ -6,6 +6,11 @@
   <meta name="description" content="楊心門のお知らせ。稽古予定、大会情報、イベント案内。">
   <title>お知らせ | 楊心門</title>
 
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
@@ -61,9 +66,68 @@
     </div>
   </section>
 
-  <!-- お知らせ一覧 -->
+  <!-- ========== 最新記事（フィーチャード） ========== -->
+  <section style="padding-bottom: var(--space-2xl);">
+    <div class="container--narrow fade-in">
+
+      <!-- 記事カード本体 -->
+      <article style="background-color: var(--color-bg-tertiary); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden;">
+
+        <!-- メイン画像 -->
+        <img src="assets/images/gallery/taikai/kenttaikai-2026-opening.jpg" alt="第8回防具付鹿児島県空手道選手権大会 開会式" style="width: 100%; height: 420px; object-fit: cover; display: block;">
+
+        <!-- 本文エリア -->
+        <div style="padding: var(--space-2xl);">
+          <span class="section-label" style="color: var(--color-accent);">Latest Report</span>
+          <span class="card__date" style="display: block; margin-top: var(--space-sm);">2026.04.26</span>
+          <h2 class="section-title" style="font-size: var(--text-3xl); margin-top: var(--space-sm); line-height: var(--leading-snug);">
+            第8回 防具付鹿児島県空手道選手権大会 を終えて
+          </h2>
+
+          <!-- 本文 -->
+          <div style="margin-top: var(--space-xl); color: var(--color-text-secondary); font-weight: 300; line-height: var(--leading-relaxed); font-size: var(--text-base);">
+            <p style="margin-bottom: var(--space-md);">
+              ４月２６日、いちき串木野市に於いて開催されました <strong style="color: var(--color-text-primary); font-weight: 700;">第8回 防具付鹿児島県空手道選手権大会</strong> にご参加いただきました選手・保護者の皆様、本当にお疲れ様でした。心より有難うございました。
+            </p>
+            <p style="margin-bottom: var(--space-md);">
+              今大会を通じ、連盟の目的である <strong style="color: var(--color-accent); font-weight: 700;">「融和と団結」</strong> のもと、各団体との良き交流の場となりましたこと、大変嬉しく思います。日頃の稽古の成果を存分に発揮し、互いに礼を尽くし合う選手たちの姿に、武道の本義を改めて感じる一日でした。
+            </p>
+          </div>
+
+          <!-- 写真ギャラリー（2列） -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); margin-top: var(--space-2xl);">
+            <img src="assets/images/gallery/taikai/kenttaikai-2026-kata.jpg" alt="形演武 - 真剣な眼差しの選手" style="width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius-sm);">
+            <img src="assets/images/gallery/taikai/kenttaikai-2026-kumite.jpg" alt="防具付組手 - 全力の蹴り技" style="width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius-sm);">
+            <img src="assets/images/gallery/taikai/kenttaikai-2026-yuwa.jpg" alt="融和 - 笑顔で支え合う門下生たち" style="width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius-sm);">
+            <img src="assets/images/gallery/taikai/kenttaikai-2026-smile.jpg" alt="団結 - 仲間との笑顔" style="width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius-sm);">
+          </div>
+
+          <!-- 集合写真 -->
+          <img src="assets/images/gallery/taikai/kenttaikai-2026-group.jpg" alt="楊心門 集合写真" style="width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius-sm); margin-top: var(--space-md); display: block;">
+
+          <!-- 次なる目標 -->
+          <div style="margin-top: var(--space-2xl); padding: var(--space-xl); border-left: 4px solid var(--color-accent); background-color: var(--color-bg-secondary);">
+            <span class="section-label" style="color: var(--color-accent);">Next Goal</span>
+            <h3 style="font-family: var(--font-heading); font-size: var(--text-2xl); margin-top: var(--space-sm); margin-bottom: var(--space-sm);">
+              次なる目標は<br>第12回 防具付全日本空手道選手権大会
+            </h3>
+            <p style="color: var(--color-text-secondary); font-weight: 300; line-height: var(--leading-relaxed);">
+              ８月２日、東京都にて開催される <strong style="color: var(--color-text-primary); font-weight: 700;">第12回 防具付全日本空手道選手権大会</strong> に向けて、楊心門一同、心ひとつに稽古に励んで参ります。鹿児島の地から全国の舞台へ。
+            </p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== お知らせ一覧 ========== -->
   <section>
     <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <span class="section-label">Archive</span>
+        <h2 class="section-title">過去のお知らせ</h2>
+      </div>
       <div class="card-grid fade-in">
 
         <div class="card card--image">
