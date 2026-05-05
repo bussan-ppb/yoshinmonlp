@@ -1,0 +1,43 @@
+# mainブランチへのpushで gh-pages ブランチを自動更新するワークフロー
+# - peaceiris/actions-gh-pages@v4 を使用
+# - keep_files: true により、gh-pages 固有ファイル（CNAME、option2/ テスト版など）を保持
+# - 開発用ファイル（.github/、CLAUDE.md など）は exclude_assets で除外
+name: Deploy main to gh-pages
+
+on:
+  # main への push を契機に自動実行
+  push:
+    branches: [main]
+  # 手動実行も可能（Actions タブから「Run workflow」）
+  workflow_dispatch:
+
+permissions:
+  # gh-pages ブランチへの書き込み権限が必要
+  contents: write
+
+# 同時実行を防止（連続コミット時に最後の状態だけ確実に反映する）
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mainブランチをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: gh-pagesブランチへ反映
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          # gh-pages 固有ファイル（CNAME、option2/ など）を残す
+          keep_files: true
+          # 開発用ファイルは本番に含めない
+          exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
+          # コミットメッセージは元の main コミットメッセージを引用
+          commit_message: 'deploy: ${{ github.event.head_commit.message }}'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
