@@ -1,2 +1,5 @@
+# 検索エンジンのクロール制御
+# プレビュー環境（師範レビュー用）は検索結果に出さない
 User-agent: *
+Disallow: /preview/
 Disallow: /option2/
