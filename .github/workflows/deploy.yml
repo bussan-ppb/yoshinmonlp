@@ -1,43 +1,70 @@
-# mainブランチへのpushで gh-pages ブランチを自動更新するワークフロー
-# - peaceiris/actions-gh-pages@v4 を使用
-# - keep_files: true により、gh-pages 固有ファイル（CNAME、option2/ テスト版など）を保持
-# - 開発用ファイル（.github/、CLAUDE.md など）は exclude_assets で除外
-name: Deploy main to gh-pages
+# 段階デプロイ用ワークフロー
+# - main への push → gh-pages の /preview/ サブディレクトリに自動反映（師範レビュー用）
+# - 手動実行（workflow_dispatch）→ main HEAD を本番ルートに公開
+#
+# プレビューURL: https://yoshinmon-official.jp/preview/
+# 本番URL:     https://yoshinmon-official.jp/
+name: Deploy
 
 on:
-  # main への push を契機に自動実行
+  # main への push を契機に /preview/ を自動更新
   push:
     branches: [main]
-  # 手動実行も可能（Actions タブから「Run workflow」）
+  # 手動実行: GitHub の Actions タブから「Run workflow」で本番公開
   workflow_dispatch:
 
 permissions:
-  # gh-pages ブランチへの書き込み権限が必要
+  # gh-pages ブランチへの書き込み権限
   contents: write
 
-# 同時実行を防止（連続コミット時に最後の状態だけ確実に反映する）
+# 同時実行を制御
 concurrency:
   group: pages-deploy
-  cancel-in-progress: true
+  # 本番公開ジョブはキャンセルしない（事故防止）
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  # ===== 自動: main push → /preview/ サブディレクトリにデプロイ =====
+  preview:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: mainブランチをチェックアウト
+      - name: mainをチェックアウト
         uses: actions/checkout@v4
 
-      - name: gh-pagesブランチへ反映
+      - name: /preview/ にデプロイ
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           publish_branch: gh-pages
-          # gh-pages 固有ファイル（CNAME、option2/ など）を残す
+          # gh-pages の /preview/ サブディレクトリに配置
+          destination_dir: preview
+          # /preview/ 以下の旧ファイルは保持（差分のみ更新）
           keep_files: true
-          # 開発用ファイルは本番に含めない
+          # 開発用ファイルは公開しない
           exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
-          # コミットメッセージは元の main コミットメッセージを引用
-          commit_message: 'deploy: ${{ github.event.head_commit.message }}'
+          commit_message: 'preview: ${{ github.event.head_commit.message }}'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  # ===== 手動: workflow_dispatch → main HEAD を本番ルートに公開 =====
+  publish:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: mainをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: 本番ルートに公開
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          publish_branch: gh-pages
+          # 本番固有ファイル（CNAME、option2/、preview/ など）を保持
+          keep_files: true
+          exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
+          commit_message: 'publish: 本番公開 (main ${{ github.sha }})'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
