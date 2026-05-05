@@ -56,6 +56,7 @@
   transition: filter var(--transition-base);
 }
 
+
 /* --- デスクトップナビゲーション --- */
 .header__nav {
   display: flex;
