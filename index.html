@@ -6,6 +6,11 @@
   <meta name="description" content="楊心門 - 真道無限流 総合武術協会。鹿児島県で活動する空手道場。子供から大人まで、礼節と技を学ぶ。">
   <title>楊心門 | 真道無限流 総合武術協会</title>
 
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
   <!-- Google Fonts：Noto Sans JP（本文）+ Noto Serif JP（見出し） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,10 +34,12 @@
       <!-- デスクトップナビゲーション -->
       <nav class="header__nav">
         <a href="about.html" class="header__nav-link">理念</a>
+        <a href="founders.html" class="header__nav-link">宗師・開祖</a>
         <a href="instructors.html" class="header__nav-link">指導者</a>
         <a href="news.html" class="header__nav-link">お知らせ</a>
         <a href="gallery.html" class="header__nav-link">活動記録</a>
-        <a href="access.html" class="header__nav-link">アクセス</a>
+        <a href="practice.html" class="header__nav-link">稽古案内</a>
+        <a href="access.html" class="header__nav-link">アクセス・道場紹介</a>
         <a href="contact.html" class="header__nav-link">お問い合わせ</a>
       </nav>
 
@@ -47,19 +54,20 @@
 
   <!-- モバイルナビゲーション（オーバーレイ） -->
   <nav class="mobile-nav">
+    <a href="./" class="mobile-nav__link">ホーム</a>
     <a href="about.html" class="mobile-nav__link">理念</a>
+    <a href="founders.html" class="mobile-nav__link">宗師・開祖</a>
     <a href="instructors.html" class="mobile-nav__link">指導者</a>
     <a href="news.html" class="mobile-nav__link">お知らせ</a>
     <a href="gallery.html" class="mobile-nav__link">活動記録</a>
-    <a href="access.html" class="mobile-nav__link">アクセス</a>
+    <a href="practice.html" class="mobile-nav__link">稽古案内</a>
+    <a href="access.html" class="mobile-nav__link">アクセス・道場紹介</a>
     <a href="contact.html" class="mobile-nav__link">お問い合わせ</a>
   </nav>
 
   <!-- ========== ヒーローセクション ========== -->
   <section class="hero">
-    <div class="hero__bg">
-      <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255,255,255,0.15); font-size: 1.2rem; letter-spacing: 0.2em; white-space: nowrap; pointer-events: none;">[ ヒーロー写真が入ります ]</p>
-    </div>
+    <div class="hero__bg"></div>
     <div class="hero__overlay"></div>
 
     <div class="hero__content">
@@ -68,7 +76,7 @@
         <span class="accent">活人拳</span>となす
       </h1>
       <p class="hero__subtitle">
-        無限流もって万流の役割を果たし<br>
+        無限流をもって万流の役割を果たし<br>
         楊心門をして 活人拳となす
       </p>
       <div class="hero__actions">
@@ -83,6 +91,8 @@
   <!-- ========== 理念セクション ========== -->
   <section class="fade-in">
     <div class="container--narrow" style="text-align: center;">
+      <!-- 楊心門エンブレム -->
+      <img src="assets/images/branding/emblem-dragon.jpg" alt="楊心門 龍のエンブレム" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-lg); display: block; box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);">
       <span class="section-label">Philosophy</span>
       <h2 class="section-title">明るく、楽しく、元気よく</h2>
       <div class="divider"></div>
@@ -97,12 +107,12 @@
     </div>
   </section>
 
-  <!-- ========== 稽古案内セクション ========== -->
+  <!-- ========== 空手の目的セクション ========== -->
   <section style="background-color: var(--color-bg-secondary);">
     <div class="container">
       <div style="text-align: center; margin-bottom: var(--space-2xl);">
-        <span class="section-label">Classes</span>
-        <h2 class="section-title">稽古案内</h2>
+        <span class="section-label">Purpose</span>
+        <h2 class="section-title">空手の目的</h2>
       </div>
 
       <div class="card-grid--3col card-grid fade-in">
@@ -146,19 +156,28 @@
         <a href="news.html" class="btn btn--outline">一覧を見る →</a>
       </div>
 
-      <div class="card-grid fade-in">
+      <div class="card-grid--3col card-grid fade-in">
         <!-- お知らせカード -->
+        <a href="news.html" class="card card--image" style="text-decoration: none; color: inherit; display: block;">
+          <img class="card__img" src="assets/images/gallery/taikai/kenttaikai-2026-opening.jpg" alt="第8回防具付鹿児島県空手道選手権大会">
+          <div class="card__body">
+            <span class="card__date">2026.04.26</span>
+            <h3 class="card__title">第8回 防具付鹿児島県大会を終えて</h3>
+            <p class="card__text">いちき串木野市にて開催。連盟の目的「融和と団結」のもと、各団体との良き交流の場となりました。次なる目標は8月2日 第12回 防具付全日本大会（東京都開催）です。</p>
+          </div>
+        </a>
+
         <div class="card card--image">
-          <img class="card__img" src="assets/images/gallery/kankgeiko.jpg" alt="寒稽古の様子">
+          <img class="card__img" src="assets/images/gallery/kangeiko/umi-keiko.jpg" alt="寒稽古の様子">
           <div class="card__body">
             <span class="card__date">2024.01.29</span>
             <h3 class="card__title">令和６年能登半島地震への募金について</h3>
-            <p class="card__text">1月21日の寒稽古会場にて義援金を募り、48,191円を南日本新聞社へ振込みました。</p>
+            <p class="card__text">南日本新聞社を通じ、被災地に【楊心門の心】を届けました。</p>
           </div>
         </div>
 
         <div class="card card--image">
-          <img class="card__img" src="assets/images/gallery/10th-anniversary.jpg" alt="創立10周年祝賀会">
+          <img class="card__img" src="assets/images/gallery/10th-anniversary-group.jpg" alt="創立10周年祝賀会">
           <div class="card__body">
             <span class="card__date">2023.10.10</span>
             <h3 class="card__title">創立10周年を迎えました</h3>
@@ -179,15 +198,21 @@
           鹿児島県南大隅町に総本山を置く武道団体
         </p>
         <!-- SNSリンク -->
+        <!-- Instagram QRコード -->
         <div class="footer__social">
-          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="https://www.instagram.com/_youshinmon/" target="_blank" rel="noopener noreferrer" class="footer__instagram-qr" aria-label="Instagram">
+            <img src="assets/images/icons/instagram-qr.png" alt="Instagram QRコード - @_youshinmon" width="120" height="120">
+            <span class="footer__instagram-label">Instagram</span>
+          </a>
         </div>
       </div>
 
       <div>
-        <h4 class="footer__nav-title">ページ</h4>
+        <h4 class="footer__nav-title">楊心門</h4>
         <ul class="footer__nav-list">
-          <li><a href="about.html">理念</a></li>
+          <li><a href="about.html">理念・歴史</a></li>
+          <li><a href="founders.html">宗師・開祖</a></li>
+          <li><a href="techniques.html">技術体系</a></li>
           <li><a href="instructors.html">指導者紹介</a></li>
           <li><a href="news.html">お知らせ</a></li>
           <li><a href="gallery.html">活動記録</a></li>
@@ -197,7 +222,9 @@
       <div>
         <h4 class="footer__nav-title">ご案内</h4>
         <ul class="footer__nav-list">
-          <li><a href="access.html">アクセス</a></li>
+          <li><a href="events.html">大会・行事</a></li>
+          <li><a href="practice.html">稽古案内</a></li>
+          <li><a href="access.html">アクセス・道場紹介</a></li>
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </div>

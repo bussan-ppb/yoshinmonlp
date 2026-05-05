@@ -6,6 +6,11 @@
   <meta name="description" content="楊心門へのお問い合わせ。入門案内、体験稽古のお申し込みはこちら。">
   <title>お問い合わせ | 楊心門</title>
 
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,10 +29,12 @@
       <a href="./" class="header__logo"><img src="assets/images/logo/yoshinmon-logo.png" alt="楊心門" class="header__logo-img" width="160" height="52"></a>
       <nav class="header__nav">
         <a href="about.html" class="header__nav-link">理念</a>
+        <a href="founders.html" class="header__nav-link">宗師・開祖</a>
         <a href="instructors.html" class="header__nav-link">指導者</a>
         <a href="news.html" class="header__nav-link">お知らせ</a>
         <a href="gallery.html" class="header__nav-link">活動記録</a>
-        <a href="access.html" class="header__nav-link">アクセス</a>
+        <a href="practice.html" class="header__nav-link">稽古案内</a>
+        <a href="access.html" class="header__nav-link">アクセス・道場紹介</a>
         <a href="contact.html" class="header__nav-link">お問い合わせ</a>
       </nav>
       <button class="header__menu-btn" aria-label="メニューを開く">
@@ -37,11 +44,14 @@
   </header>
 
   <nav class="mobile-nav">
+    <a href="./" class="mobile-nav__link">ホーム</a>
     <a href="about.html" class="mobile-nav__link">理念</a>
+    <a href="founders.html" class="mobile-nav__link">宗師・開祖</a>
     <a href="instructors.html" class="mobile-nav__link">指導者</a>
     <a href="news.html" class="mobile-nav__link">お知らせ</a>
     <a href="gallery.html" class="mobile-nav__link">活動記録</a>
-    <a href="access.html" class="mobile-nav__link">アクセス</a>
+    <a href="practice.html" class="mobile-nav__link">稽古案内</a>
+    <a href="access.html" class="mobile-nav__link">アクセス・道場紹介</a>
     <a href="contact.html" class="mobile-nav__link">お問い合わせ</a>
   </nav>
 
@@ -123,14 +133,20 @@
       <div class="footer__brand">
         <div class="footer__logo">楊心門</div>
         <p class="footer__desc">真道無限流 総合武術協会<br>鹿児島県南大隅町に総本山を置く武道団体</p>
+        <!-- Instagram QRコード -->
         <div class="footer__social">
-          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="https://www.instagram.com/_youshinmon/" target="_blank" rel="noopener noreferrer" class="footer__instagram-qr" aria-label="Instagram">
+            <img src="assets/images/icons/instagram-qr.png" alt="Instagram QRコード - @_youshinmon" width="120" height="120">
+            <span class="footer__instagram-label">Instagram</span>
+          </a>
         </div>
       </div>
       <div>
-        <h4 class="footer__nav-title">ページ</h4>
+        <h4 class="footer__nav-title">楊心門</h4>
         <ul class="footer__nav-list">
-          <li><a href="about.html">理念</a></li>
+          <li><a href="about.html">理念・歴史</a></li>
+          <li><a href="founders.html">宗師・開祖</a></li>
+          <li><a href="techniques.html">技術体系</a></li>
           <li><a href="instructors.html">指導者紹介</a></li>
           <li><a href="news.html">お知らせ</a></li>
           <li><a href="gallery.html">活動記録</a></li>
@@ -139,7 +155,9 @@
       <div>
         <h4 class="footer__nav-title">ご案内</h4>
         <ul class="footer__nav-list">
-          <li><a href="access.html">アクセス</a></li>
+          <li><a href="events.html">大会・行事</a></li>
+          <li><a href="practice.html">稽古案内</a></li>
+          <li><a href="access.html">アクセス・道場紹介</a></li>
           <li><a href="contact.html">お問い合わせ</a></li>
         </ul>
       </div>

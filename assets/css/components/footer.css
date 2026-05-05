@@ -3,11 +3,12 @@
    サイト情報・ナビゲーション・SNSリンク
    ============================================ */
 
-/* ホワイト基調でもフッターは落ち着いたダーク系で締める */
+/* 和風ダーク案：フッターは極限まで黒く、金のライン一本で締める */
 .footer {
-  background-color: #1a1a1a;
+  background-color: #050505;
   color: #e0e0e0;
-  border-top: none;
+  /* 上部に金のボーダーラインでセクションを区切る */
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
   padding: var(--space-3xl) var(--page-padding) var(--space-xl);
 }
 
@@ -43,7 +44,8 @@
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: var(--tracking-wide);
-  color: #cccccc;
+  /* 金色の見出しでダークテーマを引き締める */
+  color: #c9a84c;
   margin-bottom: var(--space-md);
 }
 
@@ -61,28 +63,34 @@
   color: var(--color-accent);
 }
 
-/* --- SNSリンク --- */
+/* --- Instagram QRコード --- */
 .footer__social {
-  display: flex;
-  gap: var(--space-sm);
   margin-top: var(--space-md);
 }
 
-.footer__social-link {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #444444;
-  color: #888888;
-  font-size: var(--text-sm);
-  transition: all var(--transition-fast);
+.footer__instagram-qr {
+  display: inline-block;
+  text-align: center;
+  transition: opacity var(--transition-fast);
 }
 
-.footer__social-link:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
+.footer__instagram-qr img {
+  /* 白背景のQR画像をダークフッターに馴染ませる */
+  border-radius: 8px;
+  display: block;
+}
+
+.footer__instagram-qr:hover {
+  opacity: 0.85;
+}
+
+/* Instagramラベル */
+.footer__instagram-label {
+  display: block;
+  margin-top: var(--space-xs);
+  font-size: var(--text-xs);
+  color: #888888;
+  letter-spacing: var(--tracking-wide);
 }
 
 /* --- コピーライト --- */

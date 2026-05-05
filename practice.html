@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="楊心門空手道の稽古案内。丁寧な指導・基本の形・安全な防具付き組手・武器術の魅力をご紹介。">
+  <title>稽古案内 | 楊心門</title>
+
+  <!-- ファビコン -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/card.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+
+  <style>
+    /* 案A専用スタイル：アイコン付きカード型 */
+
+    /* アイコンカード */
+    .icon-card {
+      background-color: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      padding: var(--space-xl);
+      text-align: center;
+      transition: all var(--transition-base);
+    }
+
+    .icon-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* アイコン：漢字一文字を大きく表示 */
+    .icon-card__icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      color: var(--color-accent);
+      border: 2px solid var(--color-accent);
+      border-radius: 50%;
+    }
+
+    .icon-card__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-sm);
+    }
+
+    .icon-card__text {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* メリット3カラム */
+    .merit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .merit-item {
+      text-align: center;
+      padding: var(--space-lg);
+    }
+
+    .merit-item__number {
+      font-family: var(--font-heading);
+      font-size: var(--text-4xl);
+      color: var(--color-accent);
+      opacity: 0.3;
+      margin-bottom: var(--space-xs);
+    }
+
+    .merit-item__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-sm);
+    }
+
+    .merit-item__text {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* CTA セクション */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cta-section__title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .cta-section__text {
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-xl);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .merit-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== ヘッダー ========== -->
+  <header class="header is-scrolled">
+    <div class="header__inner">
+      <a href="./" class="header__logo"><img src="assets/images/logo/yoshinmon-logo.png" alt="楊心門" class="header__logo-img" width="160" height="52"></a>
+      <nav class="header__nav">
+        <a href="about.html" class="header__nav-link">理念</a>
+        <a href="founders.html" class="header__nav-link">宗師・開祖</a>
+        <a href="instructors.html" class="header__nav-link">指導者</a>
+        <a href="news.html" class="header__nav-link">お知らせ</a>
+        <a href="gallery.html" class="header__nav-link">活動記録</a>
+        <a href="practice.html" class="header__nav-link">稽古案内</a>
+        <a href="access.html" class="header__nav-link">アクセス・道場紹介</a>
+        <a href="contact.html" class="header__nav-link">お問い合わせ</a>
+      </nav>
+      <button class="header__menu-btn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="./" class="mobile-nav__link">ホーム</a>
+    <a href="about.html" class="mobile-nav__link">理念</a>
+    <a href="founders.html" class="mobile-nav__link">宗師・開祖</a>
+    <a href="instructors.html" class="mobile-nav__link">指導者</a>
+    <a href="news.html" class="mobile-nav__link">お知らせ</a>
+    <a href="gallery.html" class="mobile-nav__link">活動記録</a>
+    <a href="practice.html" class="mobile-nav__link">稽古案内</a>
+    <a href="access.html" class="mobile-nav__link">アクセス・道場紹介</a>
+    <a href="contact.html" class="mobile-nav__link">お問い合わせ</a>
+  </nav>
+
+  <!-- ========== ページヘッダー ========== -->
+  <section style="padding-top: calc(var(--space-4xl) + 80px); text-align: center;">
+    <div class="container--narrow">
+      <span class="section-label">Practice Guide</span>
+      <h1 class="section-title" style="font-size: var(--text-4xl);">稽古案内</h1>
+      <p class="section-subtitle" style="margin: var(--space-md) auto 0;">
+        楊心門空手道の魅力と稽古のご案内
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 導入テキスト ========== -->
+  <section style="padding-top: 0;">
+    <div class="container--narrow fade-in" style="text-align: center;">
+      <p style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: var(--leading-relaxed);">
+        楊心門空手道は、丁寧な指導のもと、基本の形をしっかりと学び、<br class="pc-only">
+        安全な防具付き組手を通して実践力を高めることができる武術です。<br class="pc-only">
+        さらに、修練を積むことで、武器術にも挑戦することができます。
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== 4つの魅力（2x2カードグリッド） ========== -->
+  <section style="background-color: var(--color-bg-secondary);">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">楊心門空手道の魅力</h2>
+      </div>
+
+      <div class="card-grid fade-in">
+        <!-- 丁寧な指導 -->
+        <div class="icon-card">
+          <div class="icon-card__icon">導</div>
+          <h3 class="icon-card__title">丁寧な指導</h3>
+          <p class="icon-card__text">
+            一人ひとりのレベルに合わせて、経験豊富な師範が丁寧に指導します。初心者の方でも安心して始めることができます。
+          </p>
+        </div>
+
+        <!-- 基本の形 -->
+        <div class="icon-card">
+          <div class="icon-card__icon">形</div>
+          <h3 class="icon-card__title">基本の形</h3>
+          <p class="icon-card__text">
+            強固な基礎を築くために、伝統的な形を習得します。形を通して、体幹を鍛え、動きを美しく洗練させることができます。
+          </p>
+        </div>
+
+        <!-- 安全な防具付き組手 -->
+        <div class="icon-card">
+          <div class="icon-card__icon">組</div>
+          <h3 class="icon-card__title">安全な防具付き組手</h3>
+          <p class="icon-card__text">
+            防具を着用して行う組手は、安全性を確保しながら、実戦的な動きを学ぶことができます。
+          </p>
+        </div>
+
+        <!-- 武器術 -->
+        <div class="icon-card">
+          <div class="icon-card__icon">武</div>
+          <h3 class="icon-card__title">武器術</h3>
+          <p class="icon-card__text">
+            ある程度の修練を積むと、棒術・杖術・サイ術・ヌンチャク・トンファー等の武器術に挑戦することができます。より奥深い武道の世界が広がります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 選ぶメリット（3カラム） ========== -->
+  <section>
+    <div class="container">
+      <div style="text-align: center; margin-bottom: var(--space-2xl);">
+        <span class="section-label">Benefits</span>
+        <h2 class="section-title">楊心門空手道を選ぶメリット</h2>
+      </div>
+
+      <div class="merit-grid fade-in">
+        <div class="merit-item">
+          <div class="merit-item__number">01</div>
+          <h3 class="merit-item__title">心身の鍛錬</h3>
+          <p class="merit-item__text">
+            体を動かすだけでなく、精神も鍛えられ、心身ともに成長することができます。
+          </p>
+        </div>
+
+        <div class="merit-item">
+          <div class="merit-item__number">02</div>
+          <h3 class="merit-item__title">礼儀作法の習得</h3>
+          <p class="merit-item__text">
+            武道を通して、礼儀作法を自然と身につけることができます。
+          </p>
+        </div>
+
+        <div class="merit-item">
+          <div class="merit-item__number">03</div>
+          <h3 class="merit-item__title">仲間との出会い</h3>
+          <p class="merit-item__text">
+            道場には、様々な年齢層の人々が集まります。仲間との交流を通じて、豊かな人間関係を築くことができます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-section">
+    <div class="container--narrow">
+      <h2 class="cta-section__title">まずは体験から</h2>
+      <p class="cta-section__text">
+        楊心門空手道は、伝統と革新を融合させた、魅力あふれる武術です。<br>
+        心身ともに健やかに成長したい方、武道に興味がある方、ぜひ一度体験してみてください。
+      </p>
+      <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+        <a href="contact.html" class="btn btn--primary">お問い合わせ →</a>
+        <a href="access.html" class="btn btn--outline">道場一覧を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== フッター ========== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo">楊心門</div>
+        <p class="footer__desc">真道無限流 総合武術協会<br>鹿児島県南大隅町に総本山を置く武道団体</p>
+        <!-- Instagram QRコード -->
+        <div class="footer__social">
+          <a href="https://www.instagram.com/_youshinmon/" target="_blank" rel="noopener noreferrer" class="footer__instagram-qr" aria-label="Instagram">
+            <img src="assets/images/icons/instagram-qr.png" alt="Instagram QRコード - @_youshinmon" width="120" height="120">
+            <span class="footer__instagram-label">Instagram</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer__nav-title">楊心門</h4>
+        <ul class="footer__nav-list">
+          <li><a href="about.html">理念・歴史</a></li>
+          <li><a href="founders.html">宗師・開祖</a></li>
+          <li><a href="techniques.html">技術体系</a></li>
+          <li><a href="instructors.html">指導者紹介</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer__nav-title">ご案内</h4>
+        <ul class="footer__nav-list">
+          <li><a href="events.html">大会・行事</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="gallery.html">活動記録</a></li>
+          <li><a href="practice.html">稽古案内</a></li>
+          <li><a href="access.html">アクセス・道場紹介</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2026 Yoshinmon - Shindo Mugenryu. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

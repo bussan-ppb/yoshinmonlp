@@ -90,3 +90,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* 小型スマートフォンでは1カラム */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
