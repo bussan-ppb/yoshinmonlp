@@ -45,20 +45,8 @@
   gap: var(--space-lg);
 }
 
-/* 3列レイアウト（指導者紹介ページなど）
-   人数が3で割り切れない時に最後の行を中央寄せできるよう、
-   CSS Grid ではなく Flexbox を採用 */
 .card-grid--3col {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* gap は .card-grid から継承（var(--space-lg) = 32px） */
-}
-
-.card-grid--3col > .card {
-  /* 3列分割: 100%幅から gap 2つ分を引いて3で割る */
-  flex: 0 1 calc((100% - 2 * var(--space-lg)) / 3);
-  min-width: 0;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* --- 画像付きカード（お知らせ・ギャラリー用） --- */
@@ -117,19 +105,15 @@
 
 /* --- レスポンシブ --- */
 @media (max-width: 1024px) {
-  /* 1024px以下: 2列レイアウト */
-  .card-grid--3col > .card {
-    flex-basis: calc((100% - var(--space-lg)) / 2);
+  .card-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  /* 768px以下: 1列レイアウト */
-  .card-grid {
+  .card-grid,
+  .card-grid--3col {
     grid-template-columns: 1fr;
-  }
-  .card-grid--3col > .card {
-    flex-basis: 100%;
   }
 }
 /* アバター画像ラッパー（三日月フレーム付き写真の顔にズームイン） */
@@ -183,18 +167,16 @@
   margin-bottom: var(--space-sm);
 }
 
-/* --- レスポンシブ（重複ブロック・上の定義と同等） --- */
+/* --- レスポンシブ --- */
 @media (max-width: 1024px) {
-  .card-grid--3col > .card {
-    flex-basis: calc((100% - var(--space-lg)) / 2);
+  .card-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .card-grid {
+  .card-grid,
+  .card-grid--3col {
     grid-template-columns: 1fr;
-  }
-  .card-grid--3col > .card {
-    flex-basis: 100%;
   }
 }
