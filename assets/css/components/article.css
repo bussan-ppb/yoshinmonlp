@@ -1,0 +1,218 @@
+/* ============================================
+   お知らせ記事コンポーネント
+   - 一覧トップの最新記事カード（.news-featured）
+   - 記事詳細ページ本体（.article）
+   モバイルでの可読性（余白・行間・画像比率）を考慮
+   ============================================ */
+
+/* ===== 一覧トップ：最新記事カード ===== */
+.news-featured {
+  display: grid;
+  /* 左に画像、右に要約。モバイルでは縦積み */
+  grid-template-columns: 1.05fr 1fr;
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-base),
+              transform var(--transition-base);
+}
+
+.news-featured:hover {
+  border-color: var(--color-border-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.news-featured__img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.news-featured__body {
+  /* テキストが詰まって見えないよう余白を十分に確保 */
+  padding: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.news-featured__title {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
+/* 要約リード文：全文は載せず、3行程度で省略 */
+.news-featured__lead {
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+  margin-bottom: var(--space-lg);
+  /* 3行を超える分は省略記号に */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 「詳しく読む →」リンク */
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  transition: gap var(--transition-base), color var(--transition-base);
+}
+
+.news-featured:hover .read-more,
+.card--link:hover .read-more {
+  color: var(--color-accent-light);
+  gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .news-featured {
+    grid-template-columns: 1fr;
+  }
+  .news-featured__img {
+    min-height: 220px;
+    max-height: 260px;
+  }
+  .news-featured__body {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+/* ===== 一覧：過去カードをリンク化したときのラッパ ===== */
+.card--link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== 記事詳細ページ ===== */
+.article {
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* メイン画像：固定高さ（420px）をやめ、比率で可変に */
+.article__hero {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.article__body {
+  padding: var(--space-2xl);
+}
+
+.article__label {
+  color: var(--color-accent);
+}
+
+.article__date {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  margin: var(--space-sm) 0;
+}
+
+.article__title {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-lg);
+}
+
+.article__text {
+  color: var(--color-text-secondary);
+  font-weight: 300;
+  line-height: var(--leading-relaxed);
+  font-size: var(--text-base);
+}
+
+.article__text p {
+  margin-bottom: var(--space-md);
+}
+
+.article__text strong {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+/* アクセントカラーで強調する語句 */
+.article__text strong.is-accent {
+  color: var(--color-accent);
+}
+
+/* 本文中の写真ギャラリー（2列 → モバイルで1列） */
+.article__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.article__gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+/* 「次なる目標」などの強調ブロック */
+.article__callout {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border-left: 4px solid var(--color-accent);
+  background-color: var(--color-bg-secondary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.article__callout-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  margin: var(--space-sm) 0;
+}
+
+/* 一覧へ戻るリンク */
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.article-back:hover {
+  color: var(--color-accent);
+}
+
+/* モバイル：余白を詰めすぎないよう左右を縮小し、文章カラム幅を確保 */
+@media (max-width: 768px) {
+  .article__body {
+    padding: var(--space-lg) var(--space-md);
+  }
+  .article__gallery {
+    grid-template-columns: 1fr;
+  }
+  .article__callout {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
