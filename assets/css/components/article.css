@@ -211,6 +211,19 @@
   margin-left: 0.15em;
 }
 
+/* 補足の箇条書き（審査内容・規定など）：本文に続けて控えめに表示 */
+.article__notes {
+  margin: var(--space-md) 0 0;
+  padding-left: 1.2em;
+  list-style: disc;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.article__notes li {
+  margin-bottom: var(--space-xs);
+}
+
 /* 縦写真など、単独で中央に見せる写真（4:3グリッドに収まらないもの） */
 .article__photo {
   display: block;
