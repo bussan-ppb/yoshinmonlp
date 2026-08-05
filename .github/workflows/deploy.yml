@@ -1,15 +1,20 @@
 # 段階デプロイ用ワークフロー
-# - main への push → gh-pages の /preview/ サブディレクトリに自動反映（師範レビュー用）
+# - preview ブランチへの push → gh-pages の /preview/ サブディレクトリに反映（師範レビュー用）
 # - 手動実行（workflow_dispatch）→ main HEAD を本番ルートに公開
+#
+# main への push では何も公開されない。レビューが必要なときだけ
+# `git push origin main:preview` でプレビューを出す運用とする
+# （main への push ごとに /preview/ がサイト全体で上書きされ、
+#   公開済み記事のプレビューが復活してしまうのを防ぐため）。
 #
 # プレビューURL: https://yoshinmon-official.jp/preview/
 # 本番URL:     https://yoshinmon-official.jp/
 name: Deploy
 
 on:
-  # main への push を契機に /preview/ を自動更新
+  # プレビュー用ブランチへの push を契機に /preview/ を更新
   push:
-    branches: [main]
+    branches: [preview]
   # 手動実行: GitHub の Actions タブから「Run workflow」で本番公開
   workflow_dispatch:
 
@@ -24,12 +29,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # ===== 自動: main push → /preview/ サブディレクトリにデプロイ =====
+  # ===== preview ブランチへの push → /preview/ サブディレクトリにデプロイ =====
   preview:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: mainをチェックアウト
+      - name: previewブランチをチェックアウト
         uses: actions/checkout@v4
 
       - name: /preview/ にデプロイ
@@ -55,6 +60,14 @@ jobs:
     steps:
       - name: mainをチェックアウト
         uses: actions/checkout@v4
+        with:
+          # 実行時に選んだブランチではなく、必ず main を本番公開する
+          # （Actions タブで preview ブランチを選んでも本番に出ないようにする）
+          ref: main
+
+      - name: 公開するコミットを記録
+        id: rev
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: 本番ルートに公開
         uses: peaceiris/actions-gh-pages@v4
@@ -65,6 +78,6 @@ jobs:
           # 本番固有ファイル（CNAME、option2/、preview/ など）を保持
           keep_files: true
           exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
-          commit_message: 'publish: 本番公開 (main ${{ github.sha }})'
+          commit_message: 'publish: 本番公開 (main ${{ steps.rev.outputs.sha }})'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'

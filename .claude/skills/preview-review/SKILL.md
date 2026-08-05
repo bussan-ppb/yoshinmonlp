@@ -17,12 +17,13 @@ description: サイトの変更をプレビュー環境（/preview/）に出し�
 
 | 契機 | 反映先 | 実行者 |
 |---|---|---|
-| `main` への push | `https://yoshinmon-official.jp/preview/` | 自動（GitHub Actions） |
-| Actions タブから手動実行 | `https://yoshinmon-official.jp/`（本番） | ユーザー |
+| `main` への push | **何も公開されない**（ソース管理のみ） | — |
+| `preview` ブランチへの push | `https://yoshinmon-official.jp/preview/` | 私（`git push origin main:preview`） |
+| Actions タブから手動実行 | `https://yoshinmon-official.jp/`（本番） | ユーザー（または末尾の手順で私） |
 
-`main` への push は本番公開ではなくプレビュー更新である。プレビューはサイト全体のミラーで、
-`keep_files: true` のため古いファイルが残り続ける。robots.txt で検索除外はされているが、
-URLを知れば誰でも閲覧できる。
+プレビューを出すのは、レビューが必要なときだけ。`main` への push では `/preview/` は変わらない。
+プレビューはサイト全体のミラーで、`keep_files: true` のため古いファイルが残り続ける。
+robots.txt で検索除外はされているが、URLを知れば誰でも閲覧できる。
 
 ## 手順
 
@@ -40,10 +41,13 @@ URLを知れば誰でも閲覧できる。
 無関係な変更を巻き込まないよう、`git add` はパスを明示する。
 特に `assets/images/instructors/` の未コミットの削除など、作業ツリーに元からある変更に注意。
 
-### 3. push してプレビューを更新する
+### 3. preview ブランチに push してプレビューを更新する
+
+`main` への push ではプレビューは更新されない。`preview` ブランチへ push する。
 
 ```bash
-git push origin main
+git push origin main          # ソースを保存（これだけでは何も公開されない）
+git push origin main:preview  # プレビューを更新（強制更新が必要なら +main:preview）
 ```
 
 デプロイ完了まで30秒〜1分かかる。反映は待ってから確認する（フォアグラウンドの `sleep` は使えないので
@@ -61,7 +65,7 @@ until [ "$(curl -s -o /dev/null -w '%{http_code}' 'https://yoshinmon-official.jp
 
 ### 5. 古いプレビュー記事を掃除する
 
-push のたびにサイト全体が再アップロードされるため、以前削除したプレビュー記事も復活する。
+`preview` ブランチへの push ではサイト全体が再アップロードされるため、以前削除したプレビュー記事も復活する。
 **確認中の記事以外のプレビュー記事は残さない。** gh-pages を worktree に出して削除し、push する。
 
 ```bash
