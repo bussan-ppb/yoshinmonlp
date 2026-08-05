@@ -1,13 +1,15 @@
 ---
 name: preview-review
-description: サイトの変更をプレビュー環境（/preview/）に出し、師範代のレビュー依頼文までを用意する。お知らせの追加・修正、写真の差し替え、ページの変更など「サイトを更新したので確認してもらいたい」ときに使う。本番公開（workflow_dispatch）は行わない。
+description: サイトの変更をプレビュー環境（/preview/）に出し、師範代のレビュー依頼文までを用意する。お知らせの追加・修正、写真の差し替え、ページの変更など「サイトを更新したので確認してもらいたい」ときに使う。レビューOK後の本番公開手順も含む（公開はユーザーの指示があってから）。
 ---
 
 # プレビュー公開とレビュー依頼
 
 サイトの変更は、必ずプレビュー環境に出して師範代の確認を受けてから本番公開する。
 このスキルは「プレビューに出して、レビュー依頼文を渡す」までを担当する。
-**本番公開（GitHub Actions の workflow_dispatch）は絶対に実行しない。** ユーザーが手動で行う。
+
+**本番公開は、ユーザーから「レビューOK」「公開して」の指示を受けてから行う。**
+レビュー前に本番へ反映することは絶対にしない。公開手順は末尾の「本番公開」を参照。
 
 ## デプロイの仕組み
 
@@ -88,6 +90,34 @@ cd - && git worktree remove "$WT" --force && git branch -D tmp-ghpages-clean -q
 
 文体は敬体で丁寧に。「押忍」などの掛け声は使わない。
 LINE等で送る短縮版もあわせて出すと使いやすい。
+
+## 本番公開（レビューOKをもらってから）
+
+この環境には `gh` コマンドがないため Actions の workflow_dispatch は実行できない。
+`deploy.yml` の publish ジョブと同じ処理を worktree で再現する。
+
+```bash
+SHA=$(git rev-parse main)
+# actions/checkout 相当 — main の追跡ファイルのみ取り出す（未追跡の作業ファイルを混ぜない）
+mkdir -p "$STG" && git archive main | tar -x -C "$STG"
+# exclude_assets 相当
+rm -rf "$STG/.github" "$STG/.claude" "$STG/.gitignore" "$STG/CLAUDE.md" "$STG/README.md" "$STG/.DS_Store"
+git worktree add -q "$WT" -b tmp-publish origin/gh-pages
+cp -R "$STG"/. "$WT"/            # keep_files: true 相当（既存ファイルは消さない）
+cd "$WT" && git add .            # -A は使わない。CNAME・.nojekyll・option2/・preview/ を消さないため
+git diff --cached --name-only --diff-filter=D   # 出力が空であることを必ず確認
+git commit -m "publish: 本番公開 (main $SHA)"
+git push -q origin HEAD:gh-pages
+```
+
+公開後の確認（反映まで30秒〜1分）。
+
+1. 新規ページ・追加画像すべてが200
+2. **既存ページが壊れていないこと** — 各固定ページ、過去のお知らせ、`/option2/`、`/CNAME`、`/robots.txt` が200
+3. 実際の表示をスクリーンショットで確認
+4. レビュー済み記事のプレビュー（`preview/news/<記事>.html`）を削除する
+
+作業用 worktree とブランチは必ず撤去する（`git worktree remove --force` + `git branch -D`）。
 
 ## 判断に迷ったときの原則
 
