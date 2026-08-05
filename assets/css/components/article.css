@@ -158,6 +158,17 @@
   color: var(--color-accent);
 }
 
+/* 本文中のリンク（過去のお知らせへの参照など）：アクセント色＋下線で判別しやすく */
+.article__text a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.article__text a:hover {
+  color: var(--color-text-primary);
+}
+
 /* 本文中の写真ギャラリー（2列 → モバイルで1列） */
 .article__gallery {
   display: grid;
