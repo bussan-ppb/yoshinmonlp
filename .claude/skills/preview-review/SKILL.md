@@ -22,8 +22,10 @@ description: サイトの変更をプレビュー環境（/preview/）に出し�
 | Actions タブから手動実行 | `https://yoshinmon-official.jp/`（本番） | ユーザー（または末尾の手順で私） |
 
 プレビューを出すのは、レビューが必要なときだけ。`main` への push では `/preview/` は変わらない。
-プレビューはサイト全体のミラーで、`keep_files: true` のため古いファイルが残り続ける。
-robots.txt で検索除外はされているが、URLを知れば誰でも閲覧できる。
+反映は `.github/scripts/sync-site.sh` によるミラー方式で、ソースから消したファイルは公開先からも消える
+（差し替え・削除した写真が公開URLに残り続けないようにするため）。
+本番への反映では `/preview/`・`/option2/`・`CNAME`・`.nojekyll` には触れない。
+プレビューはサイト全体のミラーで、robots.txt で検索除外はされているが、URLを知れば誰でも閲覧できる。
 
 ## 手順
 
@@ -107,15 +109,17 @@ LINE等で送る短縮版もあわせて出すと使いやすい。
 SHA=$(git rev-parse main)
 # actions/checkout 相当 — main の追跡ファイルのみ取り出す（未追跡の作業ファイルを混ぜない）
 mkdir -p "$STG" && git archive main | tar -x -C "$STG"
-# exclude_assets 相当
-rm -rf "$STG/.github" "$STG/.claude" "$STG/.agents" "$STG/.gitignore" "$STG/CLAUDE.md" "$STG/AGENTS.md" "$STG/README.md" "$STG/.DS_Store"
 git worktree add -q "$WT" -b tmp-publish origin/gh-pages
-cp -R "$STG"/. "$WT"/            # keep_files: true 相当（既存ファイルは消さない）
-cd "$WT" && git add .            # -A は使わない。CNAME・.nojekyll・option2/・preview/ を消さないため
-git diff --cached --name-only --diff-filter=D   # 出力が空であることを必ず確認
+# ワークフローと同じスクリプトでミラーする（開発用ファイルの除外と本番固有ファイルの保護も含む）
+.github/scripts/sync-site.sh "$STG" "$WT" root
+cd "$WT" && git add -A
+git diff --cached --name-only --diff-filter=D   # 削除されるファイルが意図どおりか必ず確認
+git cat-file -e :CNAME && git cat-file -e :.nojekyll   # 本番固有ファイルが残っていること
 git commit -m "publish: 本番公開 (main $SHA)"
 git push -q origin HEAD:gh-pages
 ```
+
+削除一覧に、main で消したファイル以外（`preview/`・`option2/`・`CNAME` など）が出たら中止する。
 
 公開後の確認（反映まで30秒〜1分）。
 

@@ -49,6 +49,8 @@ Claude Code は `CLAUDE.md` から、Codex はこのファイルを直接読み�
   `https://yoshinmon-official.jp/preview/` が更新される（`.github/workflows/deploy.yml`）。
 - 本番公開は、ユーザーから「レビューOK」「公開して」の指示を受けてから行う。
 - レビュー済み記事のプレビューは `/preview/` に残さない。
+- 公開はミラー方式（`.github/scripts/sync-site.sh`）。main から消したファイルは本番からも消える。
+  本番の `/preview/`・`/option2/`・`CNAME`・`.nojekyll` はスクリプトが保護する。
 - 具体的な手順は `preview-review` スキル（`.agents/skills/preview-review/SKILL.md`）にある。
 
 ## ブランチ

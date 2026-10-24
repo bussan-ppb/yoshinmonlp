@@ -7,6 +7,9 @@
 # （main への push ごとに /preview/ がサイト全体で上書きされ、
 #   公開済み記事のプレビューが復活してしまうのを防ぐため）。
 #
+# 反映はミラー方式（.github/scripts/sync-site.sh）。ソースから消したファイルは
+# 公開先からも消える。写真の削除依頼に確実に応えられるようにするため。
+#
 # プレビューURL: https://yoshinmon-official.jp/preview/
 # 本番URL:     https://yoshinmon-official.jp/
 name: Deploy
@@ -36,22 +39,33 @@ jobs:
     steps:
       - name: previewブランチをチェックアウト
         uses: actions/checkout@v4
-
-      - name: /preview/ にデプロイ
-        uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: gh-pages
-          # gh-pages の /preview/ サブディレクトリに配置
-          destination_dir: preview
-          # /preview/ 以下の旧ファイルは保持（差分のみ更新）
-          keep_files: true
-          # 開発用ファイルは公開しない
-          exclude_assets: '.github,.gitignore,.claude,.agents,CLAUDE.md,AGENTS.md,README.md,.DS_Store'
-          commit_message: 'preview: ${{ github.event.head_commit.message }}'
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          path: src
+
+      - name: gh-pagesをチェックアウト
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: site
+
+      - name: /preview/ をミラー
+        run: src/.github/scripts/sync-site.sh src site preview
+
+      - name: gh-pages に push
+        working-directory: site
+        env:
+          # コミットメッセージはシェルに直接埋め込まず環境変数で渡す（コマンド注入の防止）
+          HEAD_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A preview
+          if git diff --cached --quiet; then
+            echo '変更なし'
+            exit 0
+          fi
+          git commit -q -m "preview: ${HEAD_MESSAGE%%$'\n'*}"
+          git push -q origin HEAD:gh-pages
 
   # ===== 手動: workflow_dispatch → main HEAD を本番ルートに公開 =====
   publish:
@@ -64,20 +78,36 @@ jobs:
           # 実行時に選んだブランチではなく、必ず main を本番公開する
           # （Actions タブで preview ブランチを選んでも本番に出ないようにする）
           ref: main
+          path: src
 
-      - name: 公開するコミットを記録
-        id: rev
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
-      - name: 本番ルートに公開
-        uses: peaceiris/actions-gh-pages@v4
+      - name: gh-pagesをチェックアウト
+        uses: actions/checkout@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          publish_branch: gh-pages
-          # 本番固有ファイル（CNAME、option2/、preview/ など）を保持
-          keep_files: true
-          exclude_assets: '.github,.gitignore,.claude,.agents,CLAUDE.md,AGENTS.md,README.md,.DS_Store'
-          commit_message: 'publish: 本番公開 (main ${{ steps.rev.outputs.sha }})'
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          ref: gh-pages
+          path: site
+
+      - name: 本番ルートをミラー
+        run: src/.github/scripts/sync-site.sh src site root
+
+      - name: gh-pages に push
+        run: |
+          sha=$(git -C src rev-parse HEAD)
+          cd site
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          # 本番固有ファイルが消えていないことを確認（消えていたら中止）
+          for f in CNAME .nojekyll; do
+            if ! git cat-file -e ":$f" 2>/dev/null; then
+              echo "$f が消えるため中止します" >&2
+              exit 1
+            fi
+          done
+          echo '削除されるファイル:'
+          git diff --cached --name-only --diff-filter=D
+          if git diff --cached --quiet; then
+            echo '変更なし'
+            exit 0
+          fi
+          git commit -q -m "publish: 本番公開 (main $sha)"
+          git push -q origin HEAD:gh-pages
