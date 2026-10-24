@@ -48,7 +48,7 @@ jobs:
           # /preview/ 以下の旧ファイルは保持（差分のみ更新）
           keep_files: true
           # 開発用ファイルは公開しない
-          exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
+          exclude_assets: '.github,.gitignore,.claude,.agents,CLAUDE.md,AGENTS.md,README.md,.DS_Store'
           commit_message: 'preview: ${{ github.event.head_commit.message }}'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -77,7 +77,7 @@ jobs:
           publish_branch: gh-pages
           # 本番固有ファイル（CNAME、option2/、preview/ など）を保持
           keep_files: true
-          exclude_assets: '.github,.gitignore,.claude,CLAUDE.md,README.md,.DS_Store'
+          exclude_assets: '.github,.gitignore,.claude,.agents,CLAUDE.md,AGENTS.md,README.md,.DS_Store'
           commit_message: 'publish: 本番公開 (main ${{ steps.rev.outputs.sha }})'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'

@@ -29,7 +29,10 @@ robots.txt で検索除外はされているが、URLを知れば誰でも閲覧
 
 ### 1. ローカルで表示を確認する
 
-`.claude/launch.json` の `yoshinmon-site` を preview_start で起動し、変更したページを開く。
+ローカルサーバーを起動し、変更したページを開く。
+Claude Code では `.claude/launch.json` の `yoshinmon-site` を preview_start で起動する。
+Codex など他のエージェントでは、リポジトリ直下で `python3 -m http.server 8080` を起動して
+`http://localhost:8080/` を開く。
 コンソールエラー・画像の読み込み・モバイル表示（1カラム、横スクロールなし）まで見る。
 ユーザーに「確認してください」と丸投げせず、自分で確認して結果を伝える。
 
@@ -50,8 +53,8 @@ git push origin main          # ソースを保存（これだけでは何も公
 git push origin main:preview  # プレビューを更新（強制更新が必要なら +main:preview）
 ```
 
-デプロイ完了まで30秒〜1分かかる。反映は待ってから確認する（フォアグラウンドの `sleep` は使えないので
-`run_in_background` で `until` ループを回す）。
+デプロイ完了まで30秒〜1分かかる。反映は待ってから確認する（Claude Code ではフォアグラウンドの
+`sleep` が使えないので、`run_in_background` で次の `until` ループを回す）。
 
 ```bash
 until [ "$(curl -s -o /dev/null -w '%{http_code}' 'https://yoshinmon-official.jp/preview/<変更したページ>')" = "200" ]; do sleep 10; done
@@ -105,7 +108,7 @@ SHA=$(git rev-parse main)
 # actions/checkout 相当 — main の追跡ファイルのみ取り出す（未追跡の作業ファイルを混ぜない）
 mkdir -p "$STG" && git archive main | tar -x -C "$STG"
 # exclude_assets 相当
-rm -rf "$STG/.github" "$STG/.claude" "$STG/.gitignore" "$STG/CLAUDE.md" "$STG/README.md" "$STG/.DS_Store"
+rm -rf "$STG/.github" "$STG/.claude" "$STG/.agents" "$STG/.gitignore" "$STG/CLAUDE.md" "$STG/AGENTS.md" "$STG/README.md" "$STG/.DS_Store"
 git worktree add -q "$WT" -b tmp-publish origin/gh-pages
 cp -R "$STG"/. "$WT"/            # keep_files: true 相当（既存ファイルは消さない）
 cd "$WT" && git add .            # -A は使わない。CNAME・.nojekyll・option2/・preview/ を消さないため
